@@ -6,7 +6,7 @@ video = 0;
 obrazky = 1;
 ulozit_tabulka = 0;
 
-pocet_testu = 1000;
+pocet_testu = 1;
 pocet_prvku = 100;
 
 if obrazky == 1
