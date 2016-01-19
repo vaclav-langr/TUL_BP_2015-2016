@@ -35,46 +35,46 @@ for j = 1:pocet_testu
 
     %Krok 4
     x_n = zeros(pocet_prvku,1);
-    kroky = 2500;
+    kroky = 5000;
 
-    % tau = 0.00021;
-    tau = 0.04;
-    x_n_1 = ones(pocet_prvku,1);
-    for i = 1:kroky
-        if (sum(abs(x_n_1-x_n)) < 0.0000000001)
-            break
-        end
-        if (sum(abs(x_n_1-x_n)) < 0.0000005 && tau == 0.0002)
-            tau = 0.00001;
-        end
-        if (sum(abs(x_n_1-x_n)) < 0.0000005 && tau == 0.003)
-            tau = 0.0002;
-        end
-        if (sum(abs(x_n_1-x_n)) < 0.0000005 && tau == 0.04)
-            tau = 0.003;
-        end
-    %     b = sum(abs((-2*A'*(y_orig-A*x_n) + 2*A'*(y_orig-A*y_n))));
-    %     if sum(abs(x_n-y_n)) ~= 0
-    %         b = b / sum(abs(x_n-y_n));
-    %     end
-    %     if b == 0
-    %         b = 1;
-    %     else
-    %         b = abs(ceil(b));
-    %     end
-    %     e = min(1,1/b)/2;
+    tau = 0.1;
+%     x_n_1 = ones(pocet_prvku,1);
+    
+%     w = diag(ones(1,pocet_prvku)*tau);
+    odchylka = 10^(-6);
+%     odchylka = 0.05;
+    
+    alfa = 0.1;
+    
+    for i = 1:kroky        
         grad = -2*A'*(y_orig-A*x_n);
-    %     l = (e + (2/b - e))/2;
-        y_n = x_n - 0.001855*grad;
-    %     lambda = (e + l)/2;
+        y_n = x_n - alfa*grad;
         x_n_1 = x_n;
-        x_n = x_n + 1*(prox(tau,y_n)-x_n);
+        x_n = x_n + 1*(prox(tau*alfa,y_n)-x_n);
+        
+%         spol = A'*(A*x_n-y_orig);
+%         podminka1 = sum(abs(spol + w*sign(x_n)) < odchylka) > 95;
+%         podminka2 = sum(abs(spol) - tau < odchylka) == pocet_prvku;
+%         if(podminka1(x_n, y_orig, A, tau, odchylka) && podminka2(x_n, y_orig, A, tau, odchylka))
+%             break
+%         end
+        if (podminka1(x_n, y_orig, A, tau, odchylka))
+            if (podminka2(x_n, y_orig, A, tau, odchylka))
+                if (sum(isnan(x_n)) > 0)
+                    x_n = x_n_1;
+                end
+                break
+            end
+        end
+        
+        s = x_n - x_n_1;
+        alfa = 1 / (((sum(abs(A'*A*s)))^2)/((sum(abs(A*s)))^2));
         
         if video == 1
             plot(x_orig)
             hold on
             plot(x_n, 'r')
-            title({[num2str(round(i/kroky * 100)) ' % - ' num2str(tau)], num2str(sum(abs(x_orig-x_n)))})
+            title({[num2str(round(i/kroky * 100)) ' %'], num2str(sum(abs(x_orig-x_n))), num2str(alfa)})
             hold off
             drawnow
             writeVideo(v,getframe(f))
@@ -82,7 +82,7 @@ for j = 1:pocet_testu
             plot(x_orig)
             hold on
             plot(x_n, 'r')
-            title({[num2str(round(i/kroky * 100)) ' % - ' num2str(tau)], num2str(sum(abs(x_orig-x_n)))})
+            title({num2str(i), num2str(sum(abs(x_orig-x_n))), num2str(alfa)})
             hold off
             drawnow
         end
@@ -92,7 +92,7 @@ for j = 1:pocet_testu
     if video == 1 && j == pocet_kroku
         close(v)
     elseif obrazky == 1
-        title({['Konec - ' num2str(tau)], num2str(sum(abs(x_orig-x_n)))})
+        title({['Konec - ' num2str(i)], num2str(sum(abs(x_orig-x_n)))})
         pause
     end
     if ulozit_tabulka == 1
@@ -108,4 +108,4 @@ end
 if obrazky == 1
     close all
 end
-clear f grad i kroky pocet_prvku radku tabulka tau y_n j pocet_testu x_n_1 obrazky video ulozit_tabulka
+clear f grad i kroky pocet_prvku radku tabulka tau y_n j pocet_testu x_n_1 obrazky video ulozit_tabulka alfa odchylka podminka1 podminka2 s w spol
