@@ -45,6 +45,7 @@ if vstup == 0
     struktura.nastaveni.pocet_radku = floor(struktura.nastaveni.pocet_prvku/2);
     struktura.nastaveni.pocet_opakovani = 1000;
     struktura.nastaveni.odchylka = 10^(-6);
+    struktura.nastaveni.max_iter = 3000;
     struktura.x_orig = full(sprandn(struktura.nastaveni.pocet_prvku,1,0.1));
     struktura.A = randn(struktura.nastaveni.pocet_radku, struktura.nastaveni.pocet_prvku, struktura.nastaveni.pocet_opakovani);
     struktura.tau = logspace(-6,2.7, struktura.nastaveni.pocet_tau);
@@ -56,7 +57,7 @@ end
 for i = startI:struktura.nastaveni.pocet_opakovani
     y_orig = struktura.A(:,:,i)*struktura.x_orig;
     for j = 1:struktura.nastaveni.pocet_tau
-        x_compute = ForwardBackward(y_orig,struktura.A(:,:,i),struktura.tau(j),struktura.nastaveni.odchylka,3000);
+        x_compute = ForwardBackward(y_orig,struktura.A(:,:,i),struktura.tau(j),struktura.nastaveni.odchylka,struktura.nastaveni.max_iter);
         struktura.kroky(i, j) = norm(struktura.x_orig - x_compute, 2)^2;
     end
     save(struktura.nastaveni.nazev_zalohy, 'struktura', 'i');
