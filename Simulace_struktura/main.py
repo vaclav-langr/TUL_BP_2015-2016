@@ -13,7 +13,7 @@ def send_message(title, message):
     url = 'https://api.pushbullet.com/v2/pushes'
     request = urllib2.Request(url, data=json.dumps(data))
     request.add_header('Content-Type', 'application/json')
-    request.add_header('Access-Token', 'o.031mDrKaSHV40g7MIhCmfna4MN6PBbbu')
+    request.add_header('Access-Token', 'o.es3RQGtNJTIRUavlTVxVqzUfpCaw8r8o')
     request.get_method = lambda: method
     opener.open(request)
 

@@ -33,19 +33,13 @@ end
 if vstup == 0
     struktura = struct();
     struktura.nastaveni.nazev_zalohy = ['vysledek-' datestr(now,'ddmmyy-HHMMSS') '.mat'];
-    if strcmp(getenv('os'),'Windows_NT')
-        struktura.nastaveni.command = ['python ' pwd '\main.py'];
-    else
-        struktura.nastaveni.command = ['python ' pwd '/main.py'];
-    end
-    struktura.nastaveni.command = [struktura.nastaveni.command ' -t "MATLAB Simulation completed" -b "Simulation completed"'];
     
     struktura.nastaveni.pocet_tau = 100;
     struktura.nastaveni.pocet_prvku = 100;
     struktura.nastaveni.pocet_radku = floor(struktura.nastaveni.pocet_prvku/2);
     struktura.nastaveni.pocet_opakovani = 1000;
     struktura.nastaveni.odchylka = 10^(-6);
-    struktura.nastaveni.max_iter = 3000;
+    struktura.nastaveni.max_iter = 2500;
     struktura.x_orig = full(sprandn(struktura.nastaveni.pocet_prvku,1,0.1));
     struktura.A = randn(struktura.nastaveni.pocet_radku, struktura.nastaveni.pocet_prvku, struktura.nastaveni.pocet_opakovani);
     struktura.tau = logspace(-6,2.7, struktura.nastaveni.pocet_tau);
@@ -54,9 +48,17 @@ if vstup == 0
     startI = 1;
 end
 
+if strcmp(getenv('os'),'Windows_NT')
+    struktura.nastaveni.command = ['python ' pwd '\main.py'];
+else
+    struktura.nastaveni.command = ['python ' pwd '/main.py'];
+end
+struktura.nastaveni.command = [struktura.nastaveni.command ' -t "MATLAB Simulation completed" -b "Simulation completed"'];
+
 for i = startI:struktura.nastaveni.pocet_opakovani
     y_orig = struktura.A(:,:,i)*struktura.x_orig;
     for j = 1:struktura.nastaveni.pocet_tau
+        disp([i j])
         x_compute = ForwardBackward(y_orig,struktura.A(:,:,i),struktura.tau(j),struktura.nastaveni.odchylka,struktura.nastaveni.max_iter);
         struktura.kroky(i, j) = norm(struktura.x_orig - x_compute, 2)^2;
     end
