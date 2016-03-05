@@ -1,0 +1,139 @@
+% Nastavení šablony FM TUL
+% nastaveni prezentace
+%\documentclass[draft]{beamer}
+\documentclass[t]{beamer}
+
+\usepackage[czech]{babel}
+
+% FONTY
+
+%\usepackage[cp1250]{inputenc} % pro win1250
+%\usepackage[T1]{fontenc}
+
+\usepackage[utf8]{inputenc}
+\usepackage[IL2]{fontenc}
+
+\usepackage{lmodern}
+
+% XeLaTeX
+%\usepackage{fontspec,lipsum}
+%\defaultfontfeatures{Ligatures=TeX}
+%\usepackage[small,sf,bf]{titlesec}
+% 
+%\setromanfont{Georgia}
+%\setsansfont{Myriad Pro} %Tahoma}
+%\setsansfont{Tahoma}
+%\setsansfont{Arial}
+%\setsansfont{Times New Roman}
+%====
+
+% bohužel další fonty nejsou plnì poèeštìné, tedy nejde bez obtíží kopírovat z PDF
+
+%\usepackage{times}
+% \usepackage{avant}
+% \usepackage{bookman}
+% \usepackage{helvet}  %chybí tuèný øez u strojového písma
+% \usepackage{newcent}
+% \usepackage{palatino} 
+
+
+
+%\usepackage[scaled]{uarial}
+%\usepackage{helvet}
+
+
+\usepackage{hyperref}
+
+\mode<presentation>
+{
+  \definecolor{FM_TUL}{cmyk}{0,0.6,1,0}
+  
+  \useinnertheme{rectangles}
+  
+  % VNÌJŠÍ BAREVNÉ TÉMA NADPISÙ    
+  \usecolortheme{whale}  
+  
+  % VNITØNÍ BAREVNÉ TÉMA VÝÈTÙ, BLOKÙ ATD.  
+  \usecolortheme{orchid}
+
+  \setbeamercolor{titlelike}{parent=structure}
+  \setbeamercolor{frametitle}{fg=black}
+  \setbeamercolor{title}{fg=black}
+  \setbeamercolor{item}{fg=FM_TUL} 
+  \setbeamertemplate{navigation symbols}{} % potlaèení navigaèních symbolù
+  \setbeamercolor{block title}{fg=white,bg=FM_TUL} % pøedefinování barvy zákl. bloku
+  \setbeamercolor{caption name}{fg=FM_TUL}
+  
+%  Nadpisy slidù tuènì dokud nevyøeším použití fontù tak, aby se dalo kopírovat z pdf
+%  \setbeamercolor{frametitle}{fg=FM_TUL}
+  \setbeamertemplate{frametitle}
+  {
+    \textbf{\insertframetitle}
+    \par
+  }
+  \setbeamercolor{bibliography entry author}{fg=black} % literatura èernì a ne modøe
+  \setbeamercolor{bibliography entry title}{fg=black} % literatura èernì a ne modøe
+  \setbeamercolor{bibliography entry journal}{fg=black} % literatura èernì a ne modøe
+  \setbeamercolor{bibliography entry note}{fg=black} % literatura èernì a ne modøe
+  
+%Nefunguje  \setbeamercolor{tableofcontents}{fg=TUL_FM} % obsah TUL_FM a ne modøe
+}
+
+%===============================================================================
+% TITULNÍ STRANA
+%===============================================================================
+\setbeamertemplate{title page}{
+\begin{flushleft}
+   \includegraphics[width=0.6\textwidth]{obr/logo-fm-cmyk-cz.pdf}
+\end{flushleft} 
+  %
+\begin{center} 
+  \setbeamercolor{postit}{fg=black,bg=FM_TUL}
+%  \begin{beamercolorbox}[center,sep=2pt,wd=\textwidth,ht=3cm,dp=20pt]{postit}
+ \begin{beamercolorbox}[center,sep=10pt,wd=\textwidth,ht=3.2cm,ignorebg]{postit}
+            
+      {\bf {\LARGE \inserttitle}}\\[16pt]
+              
+      \insertsubtitle
+  \end{beamercolorbox}
+%
+  \vspace{10pt}
+  {\bf \small \insertauthor {\color{FM_TUL}}}
+%  \vspace{10pt}    
+\end{center}
+%
+\vfill
+\vskip0pt plus 1filll
+{\color{FM_TUL} \hrule} 
+%
+\begin{center}
+\vspace{-8pt}         
+\TextTitulniStranaPodLinkou
+\end{center}   
+}
+%===============================================================================
+% ZÁHLAVÍ KAŽDÉHO SLAJDU
+%===============================================================================
+\setbeamertemplate{headline}{
+  \hspace{-3pt}\includegraphics[width=0.3\textwidth]{obr/logo-fm-cmyk-cz.pdf}
+}
+%===============================================================================
+\setbeamertemplate{footline}{
+\includegraphics[width=\textwidth]{obr/FM_TUL_linka_piktogram_obd.pdf}
+
+\vspace{-9.5pt}
+~\hfill {\tiny\color{white} \insertframenumber\,/\,\inserttotalframenumber}\hspace{5pt}
+
+\hspace{3pt} {\tiny \inserttitle {\color{FM_TUL} ~|} \insertdate }\hspace{3pt}
+\vspace{3pt}
+}
+%===============================================================================
+% ÚPRAVA BARVY TEXTU V OBSAHU 
+%===============================================================================
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{subsection in toc}{fg=black}
+\setbeamercolor{subsubsection in toc}{fg=black}
+\setbeamercolor{button}{bg=FM_TUL}
+
+%\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=FM_TUL}

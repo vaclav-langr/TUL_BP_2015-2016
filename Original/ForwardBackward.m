@@ -60,7 +60,7 @@ for j = 1:pocet_testu
 %         end
         if (podminka1(x_n, y_orig, A, tau, odchylka))
             if (podminka2(x_n, y_orig, A, tau, odchylka))
-                if (sum(isnan(x_n)) > 0)
+                if (any(isnan(x_n)))
                     x_n = x_n_1;
                 end
                 break

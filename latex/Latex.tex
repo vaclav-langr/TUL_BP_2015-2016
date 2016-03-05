@@ -2,8 +2,9 @@
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{indentfirst}
 
-\TULtitle{Řešení optimalizační úlohy LASSO pomocí proximálních algoritmů}{Solving of the Lasso Problem Using Proximal Algorithms}
+\TULtitle{Řešení optimalizační úlohy LASSO pomocí proximálních algoritmů}{Solution to LASSO Using Proximal Algorithms}
 \TULprogramme{B2646}{Informační technologie}{Information Technology}
 \TULbranch{1802R007}{Informační technologie}{Information Technology}
 \TULauthor{Václav Langr}
@@ -12,24 +13,58 @@
 \begin{document}
 \ThesisStart{male}
 \begin{acknowledgement}
-Poděkování
+Chtěl bych tímto poděkovat všem, kteří mne podporovali. Především děkuji mé rodině za velikou podporu, díky které mi bylo umožněno studovat. 
+\\
+Zároveň bych chtěl poděkovat také vedoucímu této práce doc. Ing. Zbyňku Koldovskému, Ph.D. za velice přínosné konzultace, rady a trpělivost.
 \end{acknowledgement}
 \clearpage
 \begin{abstractCZ}
-Český abstrakt
+
+\setlength\parindent{20pt} Tato bakalářská práce je zaměřena na rekonstrukci řídkého vektoru z jeho komprimovaného pozorování. Pro rekonstrukci se využívá optimalizačního problému LASSO a jeho řešení pomocí proximálních algoritmů. Po vytvoření takového algoritmu, který je schopen původní signál rekonstruovat, se využívá metody Monte Carlo pro simulaci algoritmu na větším souboru dat. Pro takto získaný výpočet je zjištěna kvadratická chyba řešení LASSO od původního vektoru dat, která je následně porovnávána s teoretickou chybou.  
+\\
+
+\setlength\parindent{20pt} Vypracování této bakalářské práce bylo rozděleno do několika navazujících částí. Prvním a také nejdůležitějším krokem bylo nastudování vlastností proximálních algoritmů a výpočet proximálního operátora při různých vstupních funkcích. Po takto provedené rešerši proximálních algoritmů proběhla také rešerše vlastností optimalizační úlohy LASSO. Následně bylo možné přistoupit k implementaci algoritmu v programovacím jazyce a vývojovém prostředí MATLAB. Při postupné implementaci byl algoritmus upraven tak, aby vždy dokonvergoval ke správnému nebo alespoň přibližnému řešení optimalizačního problému. Z tohoto důvodu byl algoritmus rozšířen o podmínky optimality, jež ukončují výpočet při dosažení poměrně přesné aproximace. Dále byl rozšířen o výpočet dynamické velikosti kroku. S takto připraveným algoritmem mohla být vytvořena metoda Monte Carlo, která generuje nekomprimovaný řídký vektor dat, měřící matice, jejichž prvky mají Gaussovo rozložení, a parametr lambda v zadaném rozsahu s logaritmickým rozdělením.  
+\\
+
+\setlength\parindent{20pt} Výsledek této práce může být využit pro další zpracování. Jedním z možných použití je např. pro vytvoření nového datového formátu, ve kterém by byl uložen jen komprimovaný vektor dat případně i měřící matice, pokud by nebyla shodná pro všechny komprimace. Na straně klienta by byl tedy pouze zrekonstruován původní nekomprimovaný signál.
+\\
+
+\textbf{Klíčová slova:} MATLAB, proximální algoritmus, proximální operátor, LASSO, Monte Carlo
 \end{abstractCZ}
 \vspace{2cm}
 \begin{abstractEN}
-English abstract
+\setlength\parindent{20pt} This bachelor thesis is focused on reconstruction of sparse vector from his compressed observation. For the reconstruction is used the LASSO problem and its solution using proximal algorithms. After creation of an algorithm that is able to restore the original signal is used Monte Carlo method for simulation of the algorithm with bigger set of data. Then is calculated the squared error for the found solution and the original data that is compared with the theoretical error.
+\\
+
+\setlength\parindent{20pt}Realization of this bachelor thesis was divided into several parts. The very first and the most important step was studying the properties of proximal algorithms and evaluation of proximal operator for different functions. After the research on proximal algorithms there was also research on the properties of the LASSO. After that is was possible to implement algorithm using MATLAB language and development environment. The algorithm was modified during the implementation so it always converges into correct or at least approximate solution of LASSO. Due to this reason optimality conditions were added that terminates solving if the approximation is very accurate. Also a computation of dynamical step size was created for the algorithm. 
+\\
+
+\textbf{Keywords:} MATLAB, Proximal Algorithm, Proximal Operator, LASSO, Monte Carlo
 \end{abstractEN}
 \clearpage
 \tableofcontents
 \pagebreak
-\begin{abbrList}
-\textbf{EU} & Evropská unie \\
-\end{abbrList}
 \chapter{Úvod}
 Ve své diplomové práci...
+
+\chapter{Optimalizační problém LASSO}
+
+\chapter{Proximální algoritmy}
+
+\section{Proximální operátor}
+
+\chapter{Dopředno-zpětný algoritmus}
+
+\section{Varianta s pevnou délkou kroku}
+
+\section{Dynamická délka kroku}
+
+\section{Podmínky optimality}
+
+\chapter{Monte Carlo simulace}
+
+\chapter{Závěr}
+
 \renewcommand{\bibname}{Seznam použité literatury}
 \begin{thebibliography}{99}
 \end{thebibliography}

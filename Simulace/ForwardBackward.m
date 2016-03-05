@@ -13,7 +13,7 @@ function [ x_n ] = ForwardBackward( y, A, tau, odchylka, kroky )
         
         if podminka1(x_n, y, A, tau, odchylka)
             if podminka2(x_n, y, A, tau, odchylka)
-                if (sum(isnan(x_n)) > 0)
+                if (any(isnan(x_n)))
                     x_n = x_n_1;
                 end
                 break

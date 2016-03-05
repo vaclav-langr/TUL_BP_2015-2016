@@ -1,3 +1,11 @@
 \select@language {czech}
-\contentsline {section}{Seznam zkratek}{8}
 \contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{9}
+\contentsline {chapter}{\numberline {2}Optimaliza\IeC {\v c}n\IeC {\'\i } probl\IeC {\'e}m LASSO}{10}
+\contentsline {chapter}{\numberline {3}Proxim\IeC {\'a}ln\IeC {\'\i } algoritmy}{11}
+\contentsline {section}{\numberline {3.1}Proxim\IeC {\'a}ln\IeC {\'\i } oper\IeC {\'a}tor}{11}
+\contentsline {chapter}{\numberline {4}Dop\IeC {\v r}edno-zp\IeC {\v e}tn\IeC {\'y} algoritmus}{12}
+\contentsline {section}{\numberline {4.1}Varianta s pevnou d\IeC {\'e}lkou kroku}{12}
+\contentsline {section}{\numberline {4.2}Dynamick\IeC {\'a} d\IeC {\'e}lka kroku}{12}
+\contentsline {section}{\numberline {4.3}Podm\IeC {\'\i }nky optimality}{12}
+\contentsline {chapter}{\numberline {5}Monte Carlo simulace}{13}
+\contentsline {chapter}{\numberline {6}Z\IeC {\'a}v\IeC {\v e}r}{14}
