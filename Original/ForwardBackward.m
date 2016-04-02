@@ -10,7 +10,7 @@ pocet_testu = 1;
 pocet_prvku = 100;
 
 if obrazky == 1
-    f = figure('units','normalized','outerposition',[0 0 1 1]);
+    %f = figure('units','normalized','outerposition',[0 0 1 1]);
 end
 if video == 1
     v = VideoWriter('testing.avi');
@@ -38,26 +38,16 @@ for j = 1:pocet_testu
     kroky = 5000;
 
     tau = 0.1;
-%     x_n_1 = ones(pocet_prvku,1);
-    
-%     w = diag(ones(1,pocet_prvku)*tau);
     odchylka = 10^(-6);
-%     odchylka = 0.05;
     
-    alfa = 0.1;
+    alfa = 0.001;
     
     for i = 1:kroky        
         grad = -2*A'*(y_orig-A*x_n);
         y_n = x_n - alfa*grad;
         x_n_1 = x_n;
         x_n = x_n + 1*(prox(tau*alfa,y_n)-x_n);
-        
-%         spol = A'*(A*x_n-y_orig);
-%         podminka1 = sum(abs(spol + w*sign(x_n)) < odchylka) > 95;
-%         podminka2 = sum(abs(spol) - tau < odchylka) == pocet_prvku;
-%         if(podminka1(x_n, y_orig, A, tau, odchylka) && podminka2(x_n, y_orig, A, tau, odchylka))
-%             break
-%         end
+
         if (podminka1(x_n, y_orig, A, tau, odchylka))
             if (podminka2(x_n, y_orig, A, tau, odchylka))
                 if (any(isnan(x_n)))
@@ -82,7 +72,7 @@ for j = 1:pocet_testu
             plot(x_orig)
             hold on
             plot(x_n, 'r')
-            title({num2str(i), num2str(sum(abs(x_orig-x_n))), num2str(alfa)})
+            %title({num2str(i), num2str(sum(abs(x_orig-x_n))), num2str(alfa)})
             hold off
             drawnow
         end

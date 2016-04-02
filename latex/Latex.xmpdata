@@ -1,0 +1,93 @@
+% Replace the following information with your document's actual
+% metadata. If you do not want to set a value for a certain parameter,
+% just omit it.
+%
+% Symbols permitted in metadata
+% =============================
+% 
+% Within the metadata, all printable ASCII characters except
+% '\', '{', '}', and '%' represent themselves. Also, all printable
+% Unicode characters from the basic multilingual plane (i.e., up to
+% code point U+FFFF) can be used directly with the UTF-8 encoding. 
+% Consecutive whitespace characters are combined into a single
+% space. Whitespace after a macro such as \copyright, \backslash, or
+% \sep is ignored. Blank lines are not permitted. Moreover, the
+% following markup can be used:
+%
+%  '\ '         - a literal space  (for example after a macro)                  
+%   \%          - a literal '%'                                                 
+%   \{          - a literal '{'                                                 
+%   \}          - a literal '}'                                                 
+%   \backslash  - a literal '\'                                                 
+%   \copyright  - the (c) copyright symbol                                      
+%
+% The macro \sep is only permitted within \Author, \Keywords, and
+% \Org.  It is used to separate multiple authors, keywords, etc.
+% 
+% List of supported metadata fields
+% =================================
+% 
+% Here is a complete list of user-definable metadata fields currently
+% supported, and their meanings. More may be added in the future.
+% 
+% General information:
+%
+%  \Author           - the document's human author. Separate multiple
+%                      authors with \sep.
+%  \Title            - the document's title.
+%  \Keywords         - list of keywords, separated with \sep.
+%  \Subject          - the abstract. 
+%  \Org              - publishers.
+% 
+% Copyright information:
+%
+%  \Copyright        - a copyright statement.
+%  \CopyrightURL     - location of a web page describing the owner
+%                      and/or rights statement for this document.
+%  \Copyrighted      - 'True' if the document is copyrighted, and
+%                      'False' if it isn't. This is automatically set
+%                      to 'True' if either \Copyright or \CopyrightURL
+%                      is specified, but can be overridden. For
+%                      example, if the copyright statement is "Public
+%                      Domain", this should be set to 'False'.
+%
+% Publication information:
+%
+% \PublicationType   - The type of publication. If defined, must be
+%                      one of book, catalog, feed, journal, magazine,
+%                      manual, newsletter, pamphlet. This is
+%                      automatically set to "journal" if \Journaltitle
+%                      is specified, but can be overridden.
+% \Journaltitle      - The title of the journal in which the document
+%                      was published. 
+% \Journalnumber     - The ISSN for the publication in which the
+%                      document was published.
+% \Volume            - Journal volume.
+% \Issue             - Journal issue/number.
+% \Firstpage         - First page number of the published version of
+%                      the document.
+% \Lastpage          - Last page number of the published version of
+%                      the document.
+% \Doi               - Digital Object Identifier (DOI) for the
+%                      document, without the leading "doi:".
+% \CoverDisplayDate  - Date on the cover of the journal issue, as a
+%                      human-readable text string.
+% \CoverDate         - Date on the cover of the journal issue, in a
+%                      format suitable for storing in a database field
+%                      with a 'date' data type.
+
+
+
+\Title        {Solution to LASSO Using Proximal Algorithms}
+
+\Author       {Václav Langr}
+
+\Copyright    {}
+
+\Keywords     {MATLAB\sep
+               Proximal Algorithm\sep
+               Proximal Operator\sep
+               LASSO\sep
+               Monte Carlo}
+
+\Subject      {This bachelor thesis is focused on reconstruction of sparse vector from his compressed observation. For the reconstruction is used the LASSO problem and its solution using proximal algorithms. After creation of an algorithm that is able to restore the original signal is used Monte Carlo method for simulation of the algorithm with bigger set of data. Then is calculated the squared error for the found solution and the original data that is compared with the theoretical error. Realization of this bachelor thesis was divided into several parts. The very first and the most important step was studying the properties of proximal algorithms and evaluation of proximal operator for different functions. After the research on proximal algorithms there was also research on the properties of the LASSO. After that is was possible to implement algorithm using MATLAB language and development environment. The algorithm was modified during the implementation so it always converges into correct or at least approximate solution of LASSO. Due to this reason optimality conditions were added that terminates solving if the approximation is very accurate and a computation of dynamical step size. This prepared algorithm could be used for creation of Monte Carlo method that generates uncompressed sparse vector of data, random measurement matrix with Gaussian distribution and a lambda parameter within an interval with logarithmic distribution. The result of this thesis can be used for another usage. One of the possible usage is for example creation of a new data format. The compressed data would be saved in this format and only if the measurement matrix is not the same for all compressions it would be also saved. On the client side the original uncompressed signal would be recovered.}
