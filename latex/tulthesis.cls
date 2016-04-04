@@ -285,10 +285,10 @@ with its electronic form as saved at the IS STAG portal.
 \cleardoublepage
 }
 
-
-\newcommand{\ThesisStart}[1]{
+\usepackage{pdfpages}
+\newcommand{\ThesisStart}[2]{
 \ifthenelse{\equal{\TUL@nguage}{EN}}{\ThesisTitle{EN} \ThesisTitle{CZ}}{\ThesisTitle{CZ} \ThesisTitle{EN}}
-\Assignment
+\ifthenelse{\equal{#2}{zadani}}{\includepdf[pages=-]{zadani.pdf}}{\Assignment}
 \Declaration{#1}
 }
 
