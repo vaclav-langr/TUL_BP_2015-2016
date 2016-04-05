@@ -54,35 +54,42 @@ The result of this thesis can be used for another usage. One of the possible usa
 \listoffigures
 \listoftables
 \pagebreak
+
 \renewcommand{\baselinestretch}{1.5}
 \setlength\parindent{1.2cm}
 \selectfont
+
 \chapter{Úvod}
+\label{ch:uvod}
 V dnešním světě, kdy získáváme stále více důležitých a velkých dat je stále důležitější nějakým způsobem získaná data komprimovat. Z tohoto důvodu se tato práce zabývá komprimací dat a následnou rekonstrukcí u koncového uživatele. Bude pro to použito nového přístupu pomocí proximálních algoritmů, které jsou rychlé a jednoduché na implementaci.
 
-Základní měření odpovídá funkci, viz \ref{eq:Zakladni mereni}, kde jsou původní data $x_0 \in \mathbb{C}^n$ transformovány měřící maticí $A \in \mathbb{C} ^{m \times n}$, kde $m$ je počet řádků a $n$ počet sloupců matice a v poslední řadě je nutné uvažovat i náhodná data $z \in \mathbb{C}^m$, v našem případě toto reprezentuje náhodný šum. Takto jsou získaná nová data $y \in \mathbb{C}^m$. V obecných případech platí, že $m \geq n$, ale takto nedochází k žádné komprimaci dat případně by i vzrostl počet dat. Následná rekonstrukce by se tak redukovala pouze na spočtení inverzní, v případě obdélníkové matice pseudoinverzní, matice $A^{-1}$ a spočtení původních dat $x_0$. Nicméně, tato bakalářská práce se zabývá případy, kdy $m < n$ a nelze tedy použít pseudoinverzní matici.
+Základní měření odpovídá funkci, viz \ref{eq:Zakladni mereni}, kde jsou původní data $x_0 \in \mathbb{C}^n$ transformovány měřící maticí $A \in \mathbb{C} ^{m \times n}$, kde $m$ je počet řádků a $n$ počet sloupců matice a v poslední řadě je nutné uvažovat i náhodná data $z \in \mathbb{C}^m$, v našem případě toto reprezentuje náhodný šum. Takto jsou získaná nová data $y \in \mathbb{C}^m$. V obecných případech platí, že $m \geq n$, ale takto nedochází k žádné komprimaci dat případně by i vzrostl počet dat. Následná rekonstrukce by se tak redukovala pouze na spočtení inverzní, v případě obdélníkové matice pseudoinverzní, matice $A^{-1}$ a spočtení původních dat $x_0$. Tato bakalářská práce se zabývá případy, kdy $m < n$ a nelze tedy použít pseudoinverzní matici.
 
 \begin{equation} \label{eq:Zakladni mereni} \tag{Vzorec \theVzorce}
 y = A \times x_0 + z
 \end{equation}
 \stepcounter{Vzorce}
 
-Dle pravidel lineární algebry tak existuje nekonečně mnoho řešení a je tak nemožné v tomto případě zrekonstruovat původní data. Nicméně ve skutečnosti lze data zrekonstruovat a to za podmínky, že původní vektor dat $x_0$ je řídký, tedy většina prvků z $x_0$ je rovno $0$. Právě z tohoto důvodu jsou kompresní algoritmy, například pro kompresi formátu JPEG kdy se ukládají pouze největší koeficienty diskrétní kosinové transformace, tak efektivní. Toto ale není jedinná podmínka, nutná k úspěšné rekonstrukci. Další podmínkou je správná volba měřící matice $A$. Například, při volbě diagonální jednotkové matice, by komprimovaná data $y$ byla z velké části nulová. Z tohoto důvodu by pak bylo nemožné rekonstruovat původní data.
+Dle pravidel lineární algebry tak existuje nekonečně mnoho řešení a je tak nemožné v tomto případě zrekonstruovat původní data. Nicméně ve skutečnosti lze data zrekonstruovat a to za podmínky, že původní vektor dat $x_0$ je řídký, tedy většina prvků z $x_0$ je rovno $0$. Právě z tohoto důvodu jsou kompresní algoritmy, například pro kompresi formátu JPEG, kdy se ukládají pouze největší koeficienty diskrétní kosinové transformace, tak efektivní. Toto ale není jedinná podmínka, nutná k úspěšné rekonstrukci. Další podmínkou je správná volba měřící matice $A$. Například, při volbě diagonální jednotkové matice, by komprimovaná data $y$ byla z velké části nulová. Z tohoto důvodu by pak bylo nemožné rekonstruovat původní data. Jelikož je toto téma velice zkoumané v dnešní době, vzniklo mnoho výzkumů, které se problematikou tohoto problému zabývají velice podrobně. Právě tyto výzkumy ukazují, že aby došlo k jisté rekonstrukci, je potřeba využít měřící matice o náhodných prvcích z normovaného normálního rozdělení, tj. normální rozdělení s nulovou střední hodnoutou a jednotkovým rozptylem.
 
 \chapter{Optimalizační problémy}
+\label{ch:optproblem}
+Optimalizační problém je takový problém, kdy hledáme nejlepší možné řešení $x$ ze všech možných a to tak, aby $f(x)$ bylo maximální nebo minimální, podle zadané úlohy. Hledáme tedy globální maximum, respektive minimum, funkce, kterou se snažíme vyřešit. 
+
+
 Veškeré další řešení je založeno na tom, že je lze zapsat v neomezeném tvaru. V tomto tvaru se minimalizuje obecný vstup $x$ přes součet $m$ konvexních funkcích $f_0 \ldots f_m$, které náleží množině $\mathbb{R}^n$. Takto zapsaný problém by byl definován jako:
 \begin{equation} \label{eq:Obecny problem} \tag{Vzorec \theVzorce}
 \underset{x \in \mathbb{R}^n} {\mathrm{min}} f_{0}(x)+\ldots+f_{m}(x)
 \end{equation}
 \stepcounter{Vzorce}
 
-Nicméně, jelikož lze uvažovat jakoukoliv výše zmíněnou funkci, naskýtá se tu typický problém. Některé funkce nejsou diferenciovatelné. Z tohoto důvodu se dále budou tyto funkce rozdělovat a řešit jednotlivě. 
+Nicméně, jelikož lze uvažovat jakoukoliv výše zmíněnou funkci, naskýtá se tu typický problém. Některé funkce nejsou diferenciovatelné. Z tohoto důvodu se nadále bude na funkce a jejich řešení nahlížet jako na samostatný problém.
 
 \section{Optimalizační problém LASSO}
-Problém rekonstrukce původních dat se vyskytuje v nejrůznějších oborech. Mezi tyto obory patří strojové učení, zpracování signálů a další. Jeden z možných přístupů je využít minimalizace a to ve tvaru, který popisuje \ref{eq:Obecne LASSO}. Funkce $f(x)$ ve vzorci je libovolná a volí se podle toho, jaké vlastnosti mají vstupní data. 
+Problém rekonstrukce původních dat se vyskytuje v nejrůznějších oborech. Mezi tyto obory patří strojové učení, zpracování signálů a další. Jeden z možných přístupů je využít minimalizace a to ve tvaru, který popisuje \ref{eq:Obecne LASSO}. Funkce $f_1(x)$ ve vzorci je libovolná a volí se podle toho, jaké vlastnosti mají vstupní data. 
 
 \begin{equation} \label{eq:Obecne LASSO} \tag{Vzorec \theVzorce}
-\underset{x} {\mathrm{argmin}} ~\left\{\left\|y-A \times x\right\| ^2 _2+ \lambda \times f(x)\right\}
+\underset{x} {\mathrm{argmin}} ~\left\{\left\|y-A \times x\right\| ^2 _2+ \lambda \times f_1(x)\right\}
 \end{equation}
 \stepcounter{Vzorce}
 
@@ -93,7 +100,7 @@ V případě řídkého vektoru se volí funkce $\left\|x\right\|_1$ a vyniká t
 \end{equation}
 \stepcounter{Vzorce}
 
-Protože hodnota pro $l1$ normu je suma absolutních hodnot prvků, definice pro obecnou $p$ normu je popsaná \ref{eq:norma}. Pro lepší ilustraci je tato funkce zobrazena v \ref{fig:abs}. Z tohoto zobrazení je patrné, že tato funkce má nekonečně mnoho derivací v bodě $[0,0]$ a nelze tak spočítat její derivaci.
+Jelikož obě funkce optimalizačního problému LASSO obsahují funkci $l$ normy, musí být zmíněna i její definice, která je popsána \ref{eq:norma}. V případě $l1$ normy tak vyniká pouze suma absolutních hodnot a vzniká tak další problém, jak bylo naznačeno v kapitole \ref{ch:optproblem}. Pro lepší ilustraci je tato funkce zobrazena v \ref{fig:abs}. Z tohoto zobrazení je patrné, že tato funkce má nekonečně mnoho derivací v bodě $[0,0]$ a nelze tak spočítat její derivaci, což je velice důležité pro pozdější zpracování.
 
 \begin{equation} \label{eq:norma} \tag{Vzorec \theVzorce}
 \left\|x\right\|_p = \left(\sum_{i=1}^{n} \left|x_i\right|^p\right)^{1/p}
@@ -109,15 +116,16 @@ Protože hodnota pro $l1$ normu je suma absolutních hodnot prvků, definice pro
 \end{figure}
 
 \chapter{Proximální algoritmy}
+\label{ch:proxalg}
 Jednou z možností, jak vyřešit problém zmíněný v předchozí kapitole, je využít proximální algoritmy a proximální operátory příslušející zadaným funkcím. Proximimální algoritmus je:
 \begin{equation} \label{eq:proxAlg} \tag{Vzorec \theVzorce}
 x_{n+1} = prox_{\lambda \times f}(x_{n})
 \end{equation}
 \stepcounter{Vzorce}
-V tomto vzorci je $f$ uzavřená konvexní funkce, která splňuje $f : \mathbb{R^{m}} \rightarrow \mathbb{R} \cup \left\{+\infty\right\}$. Pokud $f$ má minimum, pak $x$ v $n$-té iteraci konverguje ke správnému řešení.
+V tomto vzorci je $f$ uzavřená konvexní funkce, která splňuje $f : \mathbb{R^{m}} \rightarrow \mathbb{R} \cup \left\{+\infty\right\}$. Jak je patrné, proximální algoritmy jsou velice výhodné, pouze pokud je výpočet proximálního operátora efektivní a velice rychlý na výpočet. Pokud by nebylo splněno toto kritérium, tak by se mnoho času strávilo vyhodnocováním proximálního operátoru, které se musí provádět v každé iteraci algoritmu. Zároveň proximální operátor zjednodušuje problém, který by jinak byl obtížně řešitelný. Další obrovskou výhodou těchto algoritmů je také fakt, že byly navrženy pro co nejobecnější využití a lze je tak využít v nejrůznějších problémech.
 
 \section{Proximální operátor}
-Právě v těchto algoritmech se lze velice často setkat s tzv. proximálním operátorem.
+Jak již bylo naznačeno v kapitole \ref{ch:proxalg}, bude využito proximálního operátoru pro rekonstrukci dat. 
 
 \begin{figure}[!ht]
 \begin{center}
@@ -128,6 +136,7 @@ Právě v těchto algoritmech se lze velice často setkat s tzv. proximálním o
 \end{figure}
 
 \chapter{Dopředno-zpětný algoritmus}
+\label{ch:fwbw}
 Jako hlavní algoritmus, na který se tato práce zaměřuje, je dopředo-zpětný algoritmus. Jeho základní varianta, popsaná obrázkem \ref{fig:fw-bw alg}, používá pevnou délku kroku. Je to iterační algoritmus, který získá na vstupu komprimovaná data $y$, měřící matici $A$, velikost kroku $\alpha$ a parametr $\lambda$, který si volí uživatel.
 \begin{figure}[!ht]
 \begin{center}
@@ -172,8 +181,13 @@ x_{n+1} = prox_{\lambda \times \alpha _{n}}(x_{n}- \alpha _{n} \times \partial f
 \section{Konečná verze algoritmu}
 
 \chapter{Monte Carlo simulace}
+\label{ch:simulace}
+\section{Realizace simulace}
+\section{Ukládání výsledků}
+\section{Výsledky}
 
 \chapter{Závěr}
+\label{ch:end}
 
 \renewcommand{\bibname}{Seznam použité literatury}
 \begin{thebibliography}{99}
