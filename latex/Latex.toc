@@ -12,5 +12,5 @@
 \contentsline {chapter}{\numberline {5}Monte Carlo simulace}{20}{chapter.5}
 \contentsline {section}{\numberline {5.1}Realizace simulace}{20}{section.5.1}
 \contentsline {section}{\numberline {5.2}Ukl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{20}{section.5.2}
-\contentsline {section}{\numberline {5.3}V\IeC {\'y}sledky}{20}{section.5.3}
-\contentsline {chapter}{\numberline {6}Z\IeC {\'a}v\IeC {\v e}r}{21}{chapter.6}
+\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{21}{chapter.6}
+\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{22}{chapter.7}
