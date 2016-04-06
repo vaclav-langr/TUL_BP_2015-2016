@@ -11,14 +11,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1631
-NormalPos.bottom=572
+NormalPos.right=655
+NormalPos.bottom=556
 Class=LaTeXView
 Document=Latex.tex
 
 [Frame0_View0,0]
-TopLine=201
-Cursor=14657
+TopLine=304
+Cursor=14079
 
 [SessionInfo]
 FrameCount=1
