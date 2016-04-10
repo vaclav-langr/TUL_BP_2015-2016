@@ -7,7 +7,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{nicefrac}
-
+\usepackage[titles]{tocloft}
+\usepackage[titletoc,title]{appendix}
 \newcounter{Vzorce}
 \addtocounter{Vzorce}{1}
 
@@ -20,10 +21,7 @@
 \begin{document}
 \ThesisStart{male}{zadan}
 \begin{acknowledgement}
-Chtěl bych tímto poděkovat všem, kteří mne podporovali. Především mé rodině za velikou podporu, díky které mi bylo umožněno studovat. 
-
-
-Zároveň bych chtěl poděkovat také vedoucímu této práce doc. Ing. Zbyňku Koldovskému, Ph.D. za velice přínosné konzultace, rady a trpělivost.
+Chtěl bych tímto poděkovat všem, kteří mne podporovali. Především mé rodině za velikou podporu, díky které mi bylo umožněno studovat. \\ Zároveň bych chtěl poděkovat také vedoucímu této práce doc. Ing. Zbyňku Koldovskému, Ph.D. za velice přínosné konzultace, rady a trpělivost.
 \end{acknowledgement}
 \clearpage
 \begin{abstractCZ}
@@ -56,6 +54,13 @@ The result of this thesis can be used for another usage. One of the possible usa
 
 \listoffigures
 
+\newcommand{\listequationsname}{Seznam vzorců}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+	\addcontentsline{equ}{myequations}{\protect\numberline{}#1}\par}
+\setlength{\cftmyequationsnumwidth}{0.0em}
+\listofmyequations
+
 \pagebreak
 
 \renewcommand{\baselinestretch}{1.5}
@@ -71,6 +76,7 @@ Základní měření odpovídá funkci, viz \ref{eq:Zakladni mereni}, kde jsou p
 \begin{equation} \label{eq:Zakladni mereni} \tag{Vzorec \theVzorce}
 y = A \times x_0 + z
 \end{equation}
+\myequations{\ref{eq:Zakladni mereni} - Základní měření}
 \stepcounter{Vzorce}
 
 Dle pravidel lineární algebry tak existuje nekonečně mnoho řešení a je tak nemožné v tomto případě zrekonstruovat původní data. Nicméně ve skutečnosti lze data zrekonstruovat a to za podmínky, že původní vektor dat $x_0$ je řídký, tedy většina prvků z $x_0$ je rovno $0$. Právě z tohoto důvodu jsou kompresní algoritmy, například pro kompresi formátu JPEG, kdy se ukládají pouze největší koeficienty diskrétní kosinové transformace, tak efektivní. Toto ale není jedinná podmínka, nutná k úspěšné rekonstrukci. Další podmínkou je správně zvolená měřící matice $A$. Například, při volbě diagonální jednotkové matice, by komprimovaná data $y$ byla z velké části nulová. Z tohoto důvodu by pak bylo nemožné rekonstruovat původní data. Jelikož je toto téma velice zkoumané v dnešní době, vzniklo mnoho výzkumů, které se problematikou tohoto problému zabývají velice podrobně. Právě tyto výzkumy ukazují, že aby došlo k jisté rekonstrukci, je potřeba využít měřící matice o náhodných prvcích z normovaného normálního rozdělení, tj. normální rozdělení s nulovou střední hodnoutou a jednotkovým rozptylem.
@@ -84,6 +90,7 @@ Veškeré další řešení je založeno na tom, že je lze zapsat v neomezeném
 \begin{equation} \label{eq:Obecny problem} \tag{Vzorec \theVzorce}
 \underset{x \in \mathbb{R}^n} {\mathrm{min}} f_{0}(x)+\ldots+f_{m}(x)
 \end{equation}
+\myequations{\ref{eq:Obecny problem} - Obecný optimalizační problém}
 \stepcounter{Vzorce}
 
 Nicméně, jelikož lze uvažovat jakoukoliv výše zmíněnou funkci, naskýtá se tu typický problém. Některé funkce nejsou derivovatelné. Z tohoto důvodu se nadále bude na funkce a jejich řešení nahlížet jako na samostatný problém.
@@ -94,6 +101,7 @@ Jednou z variant jak řešit zadání této bakalářské práce je využít min
 \begin{equation} \label{eq:Obecne LASSO} \tag{Vzorec \theVzorce}
 \underset{x} {\mathrm{argmin}} ~\left\{\left\|y-A \times x\right\| ^2 _2+ \lambda \times f_1(x)\right\}
 \end{equation}
+\myequations{\ref{eq:Obecne LASSO} - Obecná úloha LASSO}
 \stepcounter{Vzorce}
 
 V případě řídkého vektoru se volí funkce $\left\|x\right\|_1$ a vzniká tak vztah popsaný níže. Tento nový vztah zároveň řeší dva problémy a to rekonstrukci původních dat $x_0$ a jejich odšumnění.
@@ -101,6 +109,7 @@ V případě řídkého vektoru se volí funkce $\left\|x\right\|_1$ a vzniká t
 \begin{equation} \label{eq:Konkretni LASSO} \tag{Vzorec \theVzorce}
 \underset{x} {\mathrm{argmin}} ~\left\{\left\|y-A \times x\right\| ^2 _2+ \lambda \times \left\|x\right\|_1\right\}
 \end{equation}
+\myequations{\ref{eq:Konkretni LASSO} - Konkrétní úloha LASSO}
 \stepcounter{Vzorce}
 
 Jelikož obě funkce optimalizačního problému LASSO obsahují funkci $l$ normy, musí být zmíněna i její definice, která je popsána \ref{eq:norma}. V případě $l1$ normy tak získáme pouze sumu absolutních hodnot a vzniká tak problém, jak bylo naznačeno v kapitole \ref{ch:optproblem}. Jak je patrné z definice absolutní hodnoty, lze sestrojit nekonečně mnoho tečen v bodě se souřadnicemi $[0, 0]$ a nelze tak spočítat její derivaci, což je velice důležité pro pozdější zpracování.
@@ -108,6 +117,7 @@ Jelikož obě funkce optimalizačního problému LASSO obsahují funkci $l$ norm
 \begin{equation} \label{eq:norma} \tag{Vzorec \theVzorce}
 \left\|x\right\|_p = \left(\sum_{i=1}^{n} \left|x_i\right|^p\right)^{1/p}
 \end{equation}
+\myequations{\ref{eq:norma} - Výpočet normy}
 \stepcounter{Vzorce}
 
 \chapter{Proximální algoritmy}
@@ -116,12 +126,25 @@ Jednou z možností, jak vyřešit problém zmíněný v předchozí kapitole, j
 \begin{equation} \label{eq:proxAlg} \tag{Vzorec \theVzorce}
 x_{n+1} = prox_{\lambda \times f}(x_{n})
 \end{equation}
+\myequations{\ref{eq:proxAlg} - Zápis proximálního algoritmu}
 \stepcounter{Vzorce}
+
 V tomto vzorci je $f$ uzavřená konvexní funkce, která splňuje $f : \mathbb{R}^{m} \rightarrow \mathbb{R} \cup \left\{+\infty\right\}$. Jak je patrné, proximální algoritmy jsou velice výhodné, pouze pokud je výpočet proximálního operátora efektivní a velice rychlý na výpočet. Pokud by nebylo splněno toto kritérium, tak by se mnoho času strávilo vyhodnocováním proximálního operátoru, které se musí provádět v každé iteraci algoritmu. Další obrovskou výhodou těchto algoritmů je také fakt, že byly navrženy pro co nejobecnější využití a lze je tak využít v nejrůznějších problémech.
 
 \section{Proximální operátor}
-Jak již bylo naznačeno v úvodu této kapitoly, bude využito proximálního operátoru pro rekonstrukci dat. Proximální operátory jsou velice důležitou součástí a to proto, že nahrazují funkce, kterou jsou obtížně řešitelné. 
+Jak již bylo naznačeno v úvodu této kapitoly, bude využito proximálního operátoru pro rekonstrukci dat. Proximální operátory jsou velice důležitou součástí a to proto, že nahrazují funkce, kterou jsou obtížně řešitelné nebo by jejich výpočet byl velice zdlouhavý. Volbu tohoto operátoru určují vstupní funkce z optimalizačního problému, resp. vlastnosti vstupních dat. 
 
+Jelikož se v konkrétním předpisu úlohy LASSO, viz \ref{eq:Konkretni LASSO}, objevuje funkce $\left\| x\right\| _1$, byl zvolen proximální operátor nazývaný "měkké prahování", dle \textit{odkaz}. Jedná se o velice jednoduchou funkci, kdy se vstupní data porovnávají s parametrem a to dle vztahu \ref{eq:soft}. Průběh této funkce je také nastíněn grafem \ref{fig:threshhold}.
+\begin{equation} \label{eq:soft} \tag{Vzorec \theVzorce}
+soft(x, \lambda) = \begin{cases}
+0  & x \leq \lambda\\
+x - \lambda & x > 0\\
+x + \lambda & x < 0
+\end{cases}
+\end{equation}
+\myequations{\ref{eq:soft} - Měkké prahování}
+\stepcounter{Vzorce}
+ 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.55]{obr/threshhold.pdf}
@@ -141,16 +164,20 @@ Jako hlavní algoritmus, na který se tato práce zaměřuje, je dopředo-zpětn
 \label{fig:fw-bw alg}
 \end{figure}
 
-Za pomoci těchto údajů se v každém kroku počítá gradient diferenciovatelné části optimalizační úlohy LASSO, v našem případě je to $\left|\right|y-A \times x\left|\right|_{2}^{2}$, jehož předpis funkce je \ref{eg:Gradient LASSO}.
-\begin{equation} \label{eg:Gradient LASSO}  \tag{Vzorec \theVzorce}
+Za pomoci těchto údajů se v každém kroku počítá gradient diferenciovatelné části optimalizační úlohy LASSO, v našem případě je to $\left|\right|y-A \times x\left|\right|_{2}^{2}$, jehož předpis funkce je \ref{eq:GradientLASSO}.
+\begin{equation} \label{eq:GradientLASSO}  \tag{Vzorec \theVzorce}
 \partial f(x) = -2 \times A^T \times (y-A \times x)
 \end{equation}
+\myequations{\ref{eq:GradientLASSO} - Derivace funkce $\left\| y - A \times x\right\|_{2}^{2}$ }
 \stepcounter{Vzorce}
-Poté se již spočítá nový vektor dat $x$ za pomoci proximálního operátoru, jehož průběh byl znázorněn v předchozí kapitole, dle vzorce viz \ref{eg:ComputeX}. 
-\begin{equation} \label{eg:ComputeX}  \tag{Vzorec \theVzorce}
+
+Poté se již spočítá nový vektor dat $x$ za pomoci proximálního operátoru, jehož průběh byl znázorněn v předchozí kapitole, dle vzorce viz \ref{eq:ComputeX}. 
+\begin{equation} \label{eq:ComputeX}  \tag{Vzorec \theVzorce}
 x_{n+1} = prox_{\lambda \times \alpha _{n}}(x_{n}- \alpha _{n} \times \partial f(x_{n}))
 \end{equation}
+\myequations{\ref{eq:ComputeX} - Výpočet nových dat $x$}
 \stepcounter{Vzorce}
+
 Takto provedený výpočet nám dává řešení, které postupně konverguje k optimálnímu bodu, pokud byl vhodně zvolen kompenzační parametr $\lambda$. V případě neoptimálně zvolené parametru $\lambda$ je algoritmus daleko rychlejší než v případě s optimálním parametrem, ale nedochází k úplně rekonstrukci dat a získali bychom tak nepřesná data.
 \begin{figure}[!ht]
 	\begin{center}
@@ -175,10 +202,11 @@ Důležitým parametrem algoritmu, jak je patrné z jeho průběhu v kapitole \r
 
 Jak lze vidět na těchto grafech, tak délka kroku má obrovský dopad, dokonce větší než kompenzační parametr $\lambda$. Na levém grafu, kde byla použita rozumná velikost kroku, je vidět, že algoritmus konverguje ke správnému řešení, vzniká tak ale mnoho nepřesností, které se nepodařilo odstranit do konce algoritmu, v tomto případě bylo nastaveno maximálně 5000 iterací. V druhém případě, kde byla použita stejná data jako v prvním grafu, lze vidět, že je algoritmus velice citlivý. Proběhlo pouze deset iterací a řešení velice rychle diverguje k nekonečnu. Z tohoto důvodu byl původní algoritmus rozšířen o dynamický výpočet velikosti kroku.
 
-Dynamická volba kroku využívá přístupu z článku \textit{odkaz}, kdy se velikost kroku vypočte pomocí aktuálně nalezených $x_{n}$, předchozích dat $x_{n-1}$ a měřící matice $A$ a to dle vztahu \ref{eg:ComputeAlpha}.
-\begin{equation} \label{eg:ComputeAlpha}  \tag{Vzorec \theVzorce}
+Dynamická volba kroku využívá přístupu z článku \textit{odkaz}, kdy se velikost kroku vypočte pomocí aktuálně nalezených $x_{n}$, předchozích dat $x_{n-1}$ a měřící matice $A$ a to dle vztahu \ref{eq:ComputeAlpha}.
+\begin{equation} \label{eq:ComputeAlpha}  \tag{Vzorec \theVzorce}
 alpha = \frac{\left\| A \times (x_{n} - x_{n-1}) \right\|}{\left\| A^{T} \times A \times (x_{n} - x_{n-1}) \right\| }
 \end{equation}
+\myequations{\ref{eq:ComputeAlpha} - Výpočet délky kroku $\alpha$}
 \stepcounter{Vzorce}
 
 Takto upravený algoritmus, již korektně rekonstruuje původní data, jak lze také vidět na grafu \ref{fig:dynamicAlpha} a lze tak přistoupit k další části řešení této bakalářské práce.
@@ -191,13 +219,24 @@ Takto upravený algoritmus, již korektně rekonstruuje původní data, jak lze 
 \end{figure}
 
 \section{Podmínky optimality}
-Takto připravený algoritmus byl dále rozšířen o podmínky optimality, které zaručují ukončení algoritmu když změna rekonstruovaných dat je dostatečně malá. V případě, že by algoritmus toto neobsahoval v lepších situacích by pouze nedošlo k zastavení algoritmu a bylo by plýtváno pouze výpočetním časem uživatele. V horších případech by však mohlo dojít i k divergenci algoritmu a to z jakéhokoliv aktuálního bodu a to kvůli dynamické volbě kroku. Dynamická volba kroku je založena na výpočtu rozdílu aktuálního a předchozího kroku algoritmu. Pokud by tato změna byla dostatečně malá, vlivem nepřesnosti počítače by tak vznikla nulová data a právě kvůli tomu by se z původního výpočtu, viz \ref{eg:ComputeAlpha}, stalo $\nicefrac{\left\| \infty\right\| }{\left\| \infty\right\| }$. Právě kvůli těmto případům bylo využito článku \cite{homotopy}. Byly tedy vytvořeny další dvě funkce pro tyto podmínky. První z nich se zabývá pouze nenulovými prvky s indexy $i$ a má předpis:
-\begin{equation} \label{eg:homotopy1}  \tag{Vzorec \theVzorce}
+Takto připravený algoritmus byl dále rozšířen o podmínky optimality, které zaručují ukončení algoritmu když změna rekonstruovaných dat je dostatečně malá. V případě, že by algoritmus toto neobsahoval v lepších situacích by pouze nedošlo k zastavení algoritmu a bylo by plýtváno pouze výpočetním časem uživatele. V horších případech by však mohlo dojít i k divergenci algoritmu z jakéhokoliv aktuálního bodu a to kvůli dynamické volbě kroku. Dynamická volba kroku je založena na výpočtu rozdílu aktuálního a předchozího kroku algoritmu. Pokud by tato změna byla dostatečně malá, vlivem nepřesnosti počítače by tak vznikla nulová data a právě kvůli tomu by se z původního výpočtu, viz \ref{eq:ComputeAlpha}, stalo $\nicefrac{0}{0}$. Právě kvůli těmto případům bylo využito článku \cite{homotopy}. Byly tedy vytvořeny další dvě funkce pro tyto podmínky. První z nich se zabývá pouze nenulovými prvky s indexy $i$ a má předpis:
+\begin{equation} \label{eq:homotopy1}  \tag{Vzorec \theVzorce}
 A_{i}^{T}*(A*x_{n} - y) + \lambda * sign((x_{n})_{i}) < \epsilon
 \end{equation}
+\myequations{\ref{eq:homotopy1} - Podmínka optimality pro nenulové prvky}
+\stepcounter{Vzorce}
+
+Výsledek levé strany tohoto vzorce je porovnáván s uživatelem zadanou hodnotou $\epsilon$, což je velikost odchylky chyby. Tento vzorec byl upraven pro toto konkrétní řešení, jelikož původní článek uvažoval i různé parametry $\lambda$ pro každý prvek původních dat $x$. Jelikož první z těchto vzorců používal pouze nenulové hodnoty, bylo využito i druhé varianty vzorce pro nulové hodnoty a to ve tvaru:
+
+\begin{equation} \label{eq:homotopy2}  \tag{Vzorec \theVzorce}
+\left|A_{i}^{T}*(A*x_{n} - y)\right| < \lambda
+\end{equation}
+\myequations{\ref{eq:homotopy2} - Podmínka optimality pro nulové prvky}
 \stepcounter{Vzorce}
 
 \section{Konečná verze algoritmu}
+Po vypracování těchto kroků mohl být původní algoritmus, jehož diagram byl znázorněn v kapitole \ref{ch:fwbw}, upraven do finální podoby. Po přídání těchto funkčních bloků vypadá jeho diagram jak je zobrazeno v přílohách této práce. Tato podoba je navržena tak, aby případná změna byla snadno proveditelná a šlo tak algoritmus dále rozšiřovat pro další účely.
+
 
 \chapter{Analýza chyby řešení}
 \label{ch:simulace}
@@ -215,4 +254,20 @@ Aby bylo možné pozorovat závislost parametru $\lambda$ a kvadratické chyby n
 \bibitem{convexOptimization} BOYD, Stephen P a Lieven VANDENBERGHE. Convex optimization. Seventh printing with corrections. New York: Cambridge University Press, 2004. ISBN 05-218-3378-7.
 \bibitem{homotopy}Z. Koldovský and P. Tichavský, "A Homotopy Recursive-in-Model-Order Algorithm for Weighted Lasso," Proc. of the 41st IEEE International Conference on Audio, Speech, and Signal Processing (ICASSP 2014), Florence, Italy, pp. 4151-4155, May 2014.
 \end{thebibliography}
+\clearpage
+\appendix
+\chapter*{Přílohy}
+\begin{appendices}
+	\section*{Příloha A: Obsah přiloženého CD}
+	\label{appA}
+	\newpage
+	\section*{Příloha B: Diagram finálního algoritmu} \label{appB}
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[scale=0.8]{obr/finalAlg.pdf}
+		\end{center}
+		\caption{Diagram finálního algoritmu}
+		\label{fig:finalAlg}
+	\end{figure}
+\end{appendices}
 \end{document}

@@ -1,15 +1,15 @@
 \select@language {czech}
-\contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{10}{chapter.1}
-\contentsline {chapter}{\numberline {2}Optimaliza\IeC {\v c}n\IeC {\'\i } probl\IeC {\'e}my}{12}{chapter.2}
-\contentsline {section}{\numberline {2.1}Optimaliza\IeC {\v c}n\IeC {\'\i } probl\IeC {\'e}m LASSO}{12}{section.2.1}
-\contentsline {chapter}{\numberline {3}Proxim\IeC {\'a}ln\IeC {\'\i } algoritmy}{14}{chapter.3}
-\contentsline {section}{\numberline {3.1}Proxim\IeC {\'a}ln\IeC {\'\i } oper\IeC {\'a}tor}{14}{section.3.1}
-\contentsline {chapter}{\numberline {4}Dop\IeC {\v r}edno-zp\IeC {\v e}tn\IeC {\'y} algoritmus}{16}{chapter.4}
-\contentsline {section}{\numberline {4.1}D\IeC {\'e}lka kroku algoritmu}{18}{section.4.1}
-\contentsline {section}{\numberline {4.2}Podm\IeC {\'\i }nky optimality}{19}{section.4.2}
-\contentsline {section}{\numberline {4.3}Kone\IeC {\v c}n\IeC {\'a} verze algoritmu}{20}{section.4.3}
-\contentsline {chapter}{\numberline {5}Anal\IeC {\'y}za chyby \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{21}{chapter.5}
-\contentsline {section}{\numberline {5.1}Realizace simulace}{21}{section.5.1}
-\contentsline {section}{\numberline {5.2}Z\IeC {\'a}lohov\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{21}{section.5.2}
-\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{22}{chapter.6}
-\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{23}{chapter.7}
+\contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{11}{chapter.1}
+\contentsline {chapter}{\numberline {2}Optimaliza\IeC {\v c}n\IeC {\'\i } probl\IeC {\'e}my}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Optimaliza\IeC {\v c}n\IeC {\'\i } probl\IeC {\'e}m LASSO}{13}{section.2.1}
+\contentsline {chapter}{\numberline {3}Proxim\IeC {\'a}ln\IeC {\'\i } algoritmy}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}Proxim\IeC {\'a}ln\IeC {\'\i } oper\IeC {\'a}tor}{15}{section.3.1}
+\contentsline {chapter}{\numberline {4}Dop\IeC {\v r}edno-zp\IeC {\v e}tn\IeC {\'y} algoritmus}{17}{chapter.4}
+\contentsline {section}{\numberline {4.1}D\IeC {\'e}lka kroku algoritmu}{19}{section.4.1}
+\contentsline {section}{\numberline {4.2}Podm\IeC {\'\i }nky optimality}{20}{section.4.2}
+\contentsline {section}{\numberline {4.3}Kone\IeC {\v c}n\IeC {\'a} verze algoritmu}{21}{section.4.3}
+\contentsline {chapter}{\numberline {5}Anal\IeC {\'y}za chyby \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{22}{chapter.5}
+\contentsline {section}{\numberline {5.1}Realizace simulace}{22}{section.5.1}
+\contentsline {section}{\numberline {5.2}Z\IeC {\'a}lohov\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{22}{section.5.2}
+\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{23}{chapter.6}
+\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{24}{chapter.7}
