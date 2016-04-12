@@ -1,6 +1,8 @@
-% clear all
-% close all
-% clc
+clear all
+close all
+clc
+
+warning('off')
 
 pocet_tau = 100;
 tau = logspace(-6,2.7, pocet_tau);
@@ -22,7 +24,7 @@ Beg(x < 0) = -1;
 Beg(x > 0) = 1;
 
 pocet_opakovani = 1000;
-vysledek = zeros(pocet_prvku, 1);
+vysledek = zeros(pocet_opakovani, pocet_tau);
 for i = 1:pocet_opakovani
     h = randn(1,pocet_prvku);
     for j = 1:length(tau)
@@ -30,8 +32,8 @@ for i = 1:pocet_opakovani
         H = 2 * (tau(j) * tau(j))*diag(ones(pocet_prvku, 1));
         f = -2*tau(j).*h';
         s_compute = quadprog(H,f,[],[],Aeg,Beg,lb,hb,[], options);
-        vysledek(j) = vysledek(j) + norm(h'-tau(j)*s_compute)^2;
+        vysledek(i, j) = norm(h'-tau(j)*s_compute)^2;
     end
 end
-vysledek = vysledek / (pocet_opakovani);
-plot(abs(vysledek/(pocet_prvku-pocet_opakovani)))
+save('quadvysledek.mat')
+warning('on')
