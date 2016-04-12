@@ -10,6 +10,6 @@
 \contentsline {section}{\numberline {4.3}Kone\IeC {\v c}n\IeC {\'a} verze algoritmu}{21}{section.4.3}
 \contentsline {chapter}{\numberline {5}Anal\IeC {\'y}za chyby \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{22}{chapter.5}
 \contentsline {section}{\numberline {5.1}Realizace simulace}{22}{section.5.1}
-\contentsline {section}{\numberline {5.2}Z\IeC {\'a}lohov\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{22}{section.5.2}
-\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{23}{chapter.6}
-\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{24}{chapter.7}
+\contentsline {section}{\numberline {5.2}Z\IeC {\'a}lohov\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{23}{section.5.2}
+\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{25}{chapter.6}
+\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{26}{chapter.7}

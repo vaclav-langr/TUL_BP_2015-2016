@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{nicefrac}
+\usepackage{caption}
 \usepackage[titles]{tocloft}
 \usepackage[titletoc,title]{appendix}
 \newcounter{Vzorce}
@@ -134,7 +135,7 @@ V tomto vzorci je $f$ uzavřená konvexní funkce, která splňuje $f : \mathbb{
 \section{Proximální operátor}
 Jak již bylo naznačeno v úvodu této kapitoly, bude využito proximálního operátoru pro rekonstrukci dat. Proximální operátory jsou velice důležitou součástí a to proto, že nahrazují funkce, kterou jsou obtížně řešitelné nebo by jejich výpočet byl velice zdlouhavý. Volbu tohoto operátoru určují vstupní funkce z optimalizačního problému, resp. vlastnosti vstupních dat. 
 
-Jelikož se v konkrétním předpisu úlohy LASSO, viz \ref{eq:Konkretni LASSO}, objevuje funkce $\left\| x\right\| _1$, byl zvolen proximální operátor nazývaný "měkké prahování", dle \textit{odkaz}. Jedná se o velice jednoduchou funkci, kdy se vstupní data porovnávají s parametrem a to dle vztahu \ref{eq:soft}. Průběh této funkce je také nastíněn grafem \ref{fig:threshhold}.
+Jelikož se v konkrétním předpisu úlohy LASSO, viz \ref{eq:Konkretni LASSO}, objevuje funkce $\left\| x\right\| _1$, byl zvolen proximální operátor nazývaný "měkké prahování", dle \textit{odkaz}. Jedná se o velice jednoduchou funkci, kdy se vstupní data porovnávají s parametrem a to dle vztahu \ref{eq:soft}. Průběh této funkce je také zobrazen grafem \ref{fig:threshhold}.
 \begin{equation} \label{eq:soft} \tag{Vzorec \theVzorce}
 soft(x, \lambda) = \begin{cases}
 0  & x \leq \lambda\\
@@ -235,14 +236,37 @@ Výsledek levé strany tohoto vzorce je porovnáván s uživatelem zadanou hodno
 \stepcounter{Vzorce}
 
 \section{Konečná verze algoritmu}
-Po vypracování těchto kroků mohl být původní algoritmus, jehož diagram byl znázorněn v kapitole \ref{ch:fwbw}, upraven do finální podoby. Po přídání těchto funkčních bloků vypadá jeho diagram jak je zobrazeno v přílohách této práce. Tato podoba je navržena tak, aby případná změna byla snadno proveditelná a šlo tak algoritmus dále rozšiřovat pro další účely.
+Po vypracování těchto kroků mohl být původní algoritmus, jehož diagram byl znázorněn v kapitole \ref{ch:fwbw}, upraven do finální podoby. Po přídání těchto funkčních bloků vypadá jeho diagram jak je zobrazeno v přílohách této práce. Tato podoba je navržena tak, aby případná změna byla snadno proveditelná a šlo tak algoritmus dále rozšiřovat pro další účely. Zároveň se tímto rozšířením dosáhlo toho, že algoritmus vždy konverguje ke správné rekonstrukci. V případě divergence se okamžitě zastaví.
 
 
 \chapter{Analýza chyby řešení}
 \label{ch:simulace}
-Aby bylo možné pozorovat závislost parametru $\lambda$ a kvadratické chyby nalezeného řešení optimalizačního řešení LASSO, je nutné vytvořit simulaci, která provede algoritmus z kapitoly \ref{ch:fwbw} na větším množství dat, které jsou na sobě nezávislé. Z tohoto důvodu byla vybrána metoda Monte Carlo. Tato metoda je založená na opakovaném generování náhodných dat, na kterých se provádí daný algoritmus a jsou takto získávány průběžné výsledky. Následně jsou tato data zprůměrovány a průměr nám poté dává empirické pozorování závislosti kvadratické chyby a parametru $\lambda$.
+Aby bylo možné pozorovat závislost parametru $\lambda$ a kvadratické chyby nalezeného řešení optimalizačního úlohy LASSO, které bylo nalezeno pomocí algoritmu navrženého v kapitole \ref{ch:fwbw}, je nutné vytvořit simulaci. Takovéto simulace vycházejí z toho, že se opakovaně provadí vybraný algoritmus na větším množství vygenerovaných, které jsou na sobě nezávislé.
 \section{Realizace simulace}
+Jednou z možných simulací je metoda Monte Carlo. Tato simulace je založená, jak již bylo zmíněno, na opakovaném generování náhodných dat, na kterých se provádí daný algoritmus a jsou takto získávány průběžné výsledky. Následně jsou tato data zprůměrována a průměr nám poté dává empirické pozorování závislosti kvadratické chyby a parametru $\lambda$. 
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[scale=0.65]{obr/mcsim.pdf}
+	\end{center}
+	\caption{Simulace Monte Carlo}
+	\label{fig:mcSim}
+\end{figure}
+
+Protože jde pouze o opakované provádění testovaného algoritmu, je tato simulace velice jednoduchá na realizaci. Víceméně základní algoritmus lze popsat jednoduchým grafem \ref{fig:mcSim}. Nicméně jákokoliv takováto simulace má obrovskou nevýhodu a to je čas. Při větších datech může výpočet trvat i několik dní. V případě této konkrétní simulace se sto prvky $\lambda$ a tisíci opakování trvala tato simulace přes jedenáct hodin. Pro porovnání byl algoritmus upraven pro $\left\| \cdot \right\|_2 $ LASSO a takováto simulace již trvala přes tři dny. Jelikož je vše realizováno pomocí vývojového prostředí a jazyku MATLAB, jednou z možností bylo vytvořit knihovní funkce v jazyku C++, aby se docílilo zrychlení algoritmu a využít této knihovny funkcí místo skriptů v MATLABu. Nicméně toto by bylo velice zdlouhavé řešení a špatně testovatelné kvůli možným chybám. Z tohoto důvodu byla nalezena další možnost a tak byla simulace rozšířena o další blok, kterým se docílí toho, že výsledky nebudou ztraceny při nečekaných událostech.
+
 \section{Zálohování výsledků}
+Onou nalezenou možností, jak je zmíněno v předchozí kapitole, je průběžné zálohování výsledků. První varianta této funkce byla realizována pomocí jednoduché tabulky, kam byly ukládány pouze výsledky. Nicméně s takto zálohovanými výsledky již nebylo možné pokračovat v simulaci. Z tohoto důvodu byla vytvořena struktura v MATLABu: 
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[scale=0.4]{obr/mcsim.pdf}
+	\end{center}
+	\caption{Struktura dat}
+	\label{fig:struktura}
+\end{figure}
+
+Takto připravené struktura je již připraveno pro ukládání a načítání. Z tohoto důvodu bylo využito funkcí \uv{save} a \uv{load}. Obě tyto funkce jsou navíc podmíněny a to tak, že v případě funkce \uv{save} je do konce simulace ukládána i dočasná iterační proměnná. Jak je již patrné právě tato proměnná by měla být také obnovena při načítání dat. S takto připravenou části zbývá vytvořit jedinné a to komunikace s uživatelem. 
 \chapter{Výsledky}
 \label{ch:vysledky}
 
@@ -257,6 +281,7 @@ Aby bylo možné pozorovat závislost parametru $\lambda$ a kvadratické chyby n
 \clearpage
 \appendix
 \chapter*{Přílohy}
+\captionsetup[figure]{list=no}
 \begin{appendices}
 	\section*{Příloha A: Obsah přiloženého CD}
 	\label{appA}
