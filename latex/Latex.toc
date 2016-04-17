@@ -8,8 +8,12 @@
 \contentsline {section}{\numberline {4.1}D\IeC {\'e}lka kroku algoritmu}{19}{section.4.1}
 \contentsline {section}{\numberline {4.2}Podm\IeC {\'\i }nky optimality}{20}{section.4.2}
 \contentsline {section}{\numberline {4.3}Kone\IeC {\v c}n\IeC {\'a} verze algoritmu}{21}{section.4.3}
-\contentsline {chapter}{\numberline {5}Anal\IeC {\'y}za chyby \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{22}{chapter.5}
-\contentsline {section}{\numberline {5.1}Realizace simulace}{22}{section.5.1}
-\contentsline {section}{\numberline {5.2}Z\IeC {\'a}lohov\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{23}{section.5.2}
-\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{25}{chapter.6}
-\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{26}{chapter.7}
+\contentsline {chapter}{\numberline {5}Anal\IeC {\'y}za chyby \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{23}{chapter.5}
+\contentsline {section}{\numberline {5.1}Realizace simulace}{23}{section.5.1}
+\contentsline {section}{\numberline {5.2}Interakce s u\IeC {\v z}ivatelem}{24}{section.5.2}
+\contentsline {section}{\numberline {5.3}V\IeC {\'y}sledek pro $l_{2}^{2}$ LASSO}{26}{section.5.3}
+\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{27}{chapter.6}
+\contentsline {section}{\numberline {6.1}Rekonstrukce dat pomoc\IeC {\'\i } CVX knihoven a Monte Carlo simulace}{27}{section.6.1}
+\contentsline {section}{\numberline {6.2}Aplikov\IeC {\'a}n\IeC {\'\i } mapovac\IeC {\'\i } funkce na analytickou p\IeC {\v r}edpov\IeC {\v e}\IeC {\v d} $l_{2}$ LASSO}{29}{section.6.2}
+\contentsline {section}{\numberline {6.3}Porovn\IeC {\'a}n\IeC {\'\i } empirick\IeC {\'y}ch v\IeC {\'y}sledk\IeC {\r u} a analytick\IeC {\'e} p\IeC {\v r}edpov\IeC {\v e}di}{29}{section.6.3}
+\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{30}{chapter.7}

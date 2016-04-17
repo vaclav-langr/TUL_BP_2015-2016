@@ -24,29 +24,114 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |}
 \end{frame}
 %===============================================================================
 %===============================================================================
-\section{Ukazka}
+\section{Info}
 \begin{frame}
-  \begin{block}{Vedoucí práce}
-    doc. Ing. Zbyněk Koldovský, Ph.D.
-  \end{block}
+	\vfill
+	\begin{block}{Vedoucí práce}
+	    doc. Ing. Zbyněk Koldovský, Ph.D.
+	\end{block}
 	\begin{block}{Cíl práce}
     \begin{itemize}
-        %\item Nastudovat vlastnosti optimalizační úlohy LASSO
-        \item Implemenovat proximální algoritmus řešící optimalizační úlohu LASSO v Matlabu
-        \item Vytvořit Monte Carlo simulaci a sledovat závilost kvadratické chyby vypočteného signálu od správného řešení na parametru lambda
+        \item Nastudovat vlastnosti optimalizační úlohy LASSO
+        \item Implementovat proximální algoritmus řešící optimalizační úlohu LASSO v MATLABu
+        \item Vytvořit Monte Carlo simulaci a sledovat závislost kvadratické chyby vypočteného signálu od správného řešení na parametru lambda
       \end{itemize}
-  \end{block}
-	\begin{block}{Stav práce}
-    Vytváření analytické předpovědi závislosti kvadratické chyby rekonstruovaného signálu na parametru lambda.
-  \end{block}
+    \end{block}
+\end{frame}
+\section{Optimalizační úloha LASSO}
+\vfill
+\begin{frame}
+	\vfill
+	\begin{block}{Základní měření signálů}
+	$y = A \times x$
+	\end{block}
+	\begin{block}{Optimalizační úloha LASSO}
+		$\underset{x} {\mathrm{argmin}} ~\left\{\left\|y-A \times x\right\| ^2 _2+ \lambda \times \left\|x\right\|_1\right\}$
+	\end{block}
+\end{frame}
+\section{Proximální algoritmus}
+\begin{frame}
+	\vfill
+	\begin{block}{Derivace $\left\| \cdot \right\|_{2}^{2} $}
+		$\partial f(x) = -2 \times A^T \times (y-A \times x)$
+	\end{block}
+			\begin{block}{Proximální algoritmus}
+				$x_{n+1} = prox_{\lambda \times step}(x_{n}- step \times \partial f(x_{n}))$
+			\end{block}
+\end{frame}
+\begin{frame}
+	\vfill
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[scale=0.6]{obr/threshhold.pdf}
+		\end{center}
+		\caption{Průběh měkkého prahování}
+		\label{fig:nse}
+	\end{figure}
+\end{frame}
+\section{Video}
+\begin{frame}
+	\vfill
+	\begin{center}
+		{\Large \bfseries
+			Ukázka průběhu proximálního algoritmu
+		} 
+	\end{center}
+\end{frame}
+\section{Monte Carlo simulace}
+\begin{frame}
+	\vfill
+	\begin{block}{Monte Carlo simulace}
+		\begin{itemize}
+			\item Jednoduché na implementaci
+			\item Na sobě nezávislá data
+			\item Odpovídající výsledky
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\vfill
+	\begin{figure}[!ht]
+		\begin{center}
+			\includegraphics[scale=0.6]{obr/nse.pdf}
+		\end{center}
+		\caption{Kvadratická chyba nalezeného řešení a původních dat}
+		\label{fig:nse}
+	\end{figure}
+\end{frame}
+\begin{frame}
+	\vfill
+	\begin{block}{Analytická předpověď}
+		\begin{itemize}
+			\item Obtížné pro $l_{2}^{2}$ LASSO
+			\item Využívá se $l_{2}$ LASSO spolu s mapovací funkcí
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\vfill
+		\begin{figure}[!ht]
+			\begin{center}
+				\includegraphics[scale=0.55]{obr/nsel2.pdf}
+			\end{center}
+			\caption{Porovnání analytické předpovědi a kvadratické chyby empirického pozorování}
+			\label{fig:nsel2}
+		\end{figure}
 \end{frame}
 %===============================================================================
 \section{Podekovani}
 \begin{frame}
+	\vfill
   \begin{center}
   {\Large \bfseries
     Děkuji za pozornost.
     } 
+  \end{center}
+  
+  \begin{center}
+  	{\Large \bfseries
+  		Prostor pro otázky.
+  	} 
   \end{center}
 \end{frame}
 \end{document}

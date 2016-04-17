@@ -2,20 +2,21 @@ clear all
 close all
 clc
 
-video = 0;
-obrazky = 1;
+video = 1;
+obrazky = 0;
 ulozit_tabulka = 0;
 
 pocet_testu = 1;
 pocet_prvku = 100;
 
 if obrazky == 1
-    %f = figure('units','normalized','outerposition',[0 0 1 1]);
+    f = figure('units','normalized','outerposition',[0 0 1 1]);
 end
 if video == 1
     v = VideoWriter('testing.avi');
     open(v)
     f = figure('units','normalized','outerposition',[0 0 1 1], 'Visible', 'off');
+% f = figure();
 end
 if ulozit_tabulka == 1
     tabulka = zeros(pocet_testu,pocet_prvku);
@@ -61,18 +62,24 @@ for j = 1:pocet_testu
         alfa = 1 / (((sum(abs(A'*A*s)))^2)/((sum(abs(A*s)))^2));
         
         if video == 1
-            plot(x_orig)
+            plot(x_orig,'LineWidth',3)
             hold on
-            plot(x_n, 'r')
-            title({[num2str(round(i/kroky * 100)) ' %'], num2str(sum(abs(x_orig-x_n))), num2str(alfa)})
+            plot(x_n, 'r', 'LineWidth',3)
+            xlabel('indexes of data [-]')
+            ylabel('value of data [-]')
+            legend('original data', 'computed data')
+            title(num2str(i))
             hold off
             drawnow
             writeVideo(v,getframe(f))
         elseif obrazky == 1
-            plot(x_orig)
+            plot(x_orig, 'LineWidth',3)
             hold on
-            plot(x_n, 'r')
-            %title({num2str(i), num2str(sum(abs(x_orig-x_n))), num2str(alfa)})
+            plot(x_n, 'r', 'LineWidth',3)
+            xlabel('indexes of data [-]')
+            ylabel('value of data [-]')
+            legend('original data', 'computed data')
+            title(num2str(i))
             hold off
             drawnow
         end
@@ -82,7 +89,10 @@ for j = 1:pocet_testu
     if video == 1 && j == pocet_kroku
         close(v)
     elseif obrazky == 1
-        title({['Konec - ' num2str(i)], num2str(sum(abs(x_orig-x_n)))})
+        xlabel('indexes of data [-]')
+        ylabel('value of data [-]')
+        legend('original data', 'computed data')
+        title(num2str(i))
         pause
     end
     if ulozit_tabulka == 1
