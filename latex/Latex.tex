@@ -267,7 +267,7 @@ Jednou z možných simulací je metoda Monte Carlo. Tato simulace je založená,
 	\label{fig:mcSim}
 \end{figure}
 
-Protože jde pouze o opakované provádění testovaného algoritmu, je tato simulace velice jednoduchá na realizaci. Základní algoritmus lze popsat jednoduchým diagramem \ref{fig:mcSim}. Nicméně jakákoliv takováto simulace má obrovskou nevýhodu a to je celkový čas simulace. Při větších datech může výpočet trvat i několik dní. V případě této konkrétní simulace se 100 prvky $\lambda$ a 1000 opakování trvala tato simulace pro $\left\| \cdot\right\|_{2}^{2} $ LASSO přes jedenáct hodin. Pro porovnání byl algoritmus upraven pro $\left\| \cdot \right\|_2 $ LASSO a takováto simulace již trvala přes tři dny. Jelikož je vše realizováno pomocí vývojového prostředí a jazyku MATLAB, jednou z možností bylo vytvořit knihovní funkce v jazyku C nebo C++, aby se docílilo zrychlení algoritmu a využít této knihovny funkcí místo skriptů v MATLABu. Nicméně toto by bylo velice zdlouhavé řešení a špatně testovatelné kvůli možným chybám. Z tohoto důvodu byla nalezena další možnost a to neřešit celkový čas. Následně tedy bylo toto řešení simulace rozšířeno o další blok, kterým se docílí toho, že výsledky nebudou ztraceny při nečekaných událostech.
+Protože jde pouze o opakované provádění testovaného algoritmu, je tato simulace velice jednoduchá na realizaci. Základní algoritmus lze popsat diagramem \ref{fig:mcSim}. Nicméně jakákoliv takováto simulace má obrovskou nevýhodu a to je celkový čas simulace. Při větších datech může výpočet trvat i několik dní. V případě této konkrétní simulace se 100 prvky $\lambda$ a 1000 opakování trvala tato simulace pro $\left\| \cdot\right\|_{2}^{2} $ LASSO přes jedenáct hodin. Pro porovnání byl algoritmus upraven pro $\left\| \cdot \right\|_2 $ LASSO a takováto simulace již trvala přes tři dny. Jelikož je vše realizováno pomocí vývojového prostředí a jazyku MATLAB, jednou z možností bylo vytvořit knihovní funkce v jazyku C nebo C++, aby se docílilo zrychlení algoritmu a využít této knihovny funkcí místo skriptů v MATLABu. Nicméně toto by bylo velice zdlouhavé řešení a špatně testovatelné kvůli možným chybám. Z tohoto důvodu byla nalezena další možnost a to neřešit celkový čas. Následně tedy bylo toto řešení simulace rozšířeno o další blok, kterým se docílí toho, že výsledky nebudou ztraceny při nečekaných událostech.
 
 \section{Interakce s uživatelem}
 Onou nalezenou možností, jak je zmíněno v předchozí kapitole, je průběžné zálohování výsledků. První varianta této funkce byla realizována pomocí jednoduché tabulky, kam byly ukládány pouze výsledky. Nicméně s takto zálohovanými výsledky již nebylo možné pokračovat v simulaci. Z tohoto důvodu byla vytvořena struktura v MATLABu, viz \ref{fig:struktura}.
@@ -298,7 +298,7 @@ S takto připravenou simulací již lze přistoupit k samotnému použití. Na z
 Tato kapitola se bude zabývat získáním výsledků pomocí naimplementovaných algoritmů, odvozením vzorců pro výpočet analytické chyby vybraného, ale i obdobného, problému a porovnáním takto získaných výsledků. 
 
 Jelikož odvození vztahu pro výpočet kvadratické chyby nalezeného řešení od původních dat podle parametru $\lambda$ pro $\left\| \cdot \right\|_{2}^{2} $ LASSO je velice obtížné, je zvolen jiný přístup, který je využíván běžně pro tento problém. Tento přístup využívá toho, že lze použít jinou variantu tohoto optimalizačního problému a to $\left\| \cdot \right\|_{2}$ LASSO, pro kterou je analýza daleko jednodušeji proveditelná a následně na tuto analýzu aplikovat mapovací funkci. Nicméně toto nás vrací zpět na začátek zadání a proto budou jednotlivé kroky popsány v jednotlivých podkapitolách. 
-\section{Rekonstrukce dat pomocí CVX knihoven a Monte Carlo simulace}
+\section{Rekonstrukce dat pomocí CVX knihoven}
 Velice důležitým prvním krokem je samotná rekonstrukce dat. Jelikož tato varianta problému LASSO nemusí mít shodné vlastnosti jako doposud použité $\left\| \cdot \right\|_{2}^{2} $ LASSO. I samotný gradient této funkce je velice náročný na výpočet a nelze ani nic před počítat před samotným prováděním algoritmu, viz \ref{eq:l2Grad}.
 
 \begin{equation} \label{eq:l2Grad}  \tag{Vzorec \theVzorce}
@@ -312,20 +312,39 @@ Z tohoto důvodu bylo využito open source knihoven CVX. Tyto knihovny jsou prim
 Po přidání tohoto balíku do vývojového prostředí MATLAB lze použít modelovacího jazyka pro vytvoření jednoduchého skriptu, který bude provádět totéž, co bylo dosud implementováno. Jelikož se jedná o snadno použitelný modelovací jazyk, není náročné implementovat skript, který bude minimalizovat vybraný problém a může vypadat následovně: 
 
 \begin{lstlisting}
+cvx_begin quiet
+variable x_n(pocet_prvku)
+minimize((norm(y-A*x_n,2)+lambda(j)*norm(x_n,1)))
+cvx_end
+\end{lstlisting}
+
+Jak je vidět, tak balík knihoven CVX opravdu velice výrazně zjednodušuje realizaci vybraného problému. Vše začíná příkazem \uv{cvx\_begin}, který deklaruje začátek deklarací a funkcí. Zde je využito varianty s parametrem \uv{quiet}, aby byl potlačen výpis částečných výsledků během opakování této části skriptu. Následně je deklarována proměnná $x_n$, přes kterou se minimalizuje zadaný problém a to o předem daném počtu prvků. Poté již následuje příkaz \uv{minimize}, kterému se deklaruje funkce, kterou chceme minimalizovat. V této funkci je využita standardní funkce \uv{norm} a to jak pro zápis $\left\| y - A \times x_n\right\|_2$, tak pro $ \left\| x \right\|_1  $, která je ještě zvětšena, resp. zmenšena, j prvkem z vektoru parametrů $\lambda$. Vše je uzavřeno druhou polovinou párového příkazu a to příkazem \uv{cvx\_end}. Získáme tak následující graf:
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[scale=0.53]{obr/cvxvsprox.pdf}
+	\end{center}
+	\caption{Porovnání CVX výsledku s proximálním algoritmem}
+	\label{fig:cvx}
+\end{figure} 
+
+Na první pohled se jedná o prakticky totožná data. Nicméně při podrobnějším zkoumání, bylo zjištěno, že žádný z prvků nezkonvergoval k úplně správné hodnotě a to ani nulové prvky. Pro porovnání bylo využito také dopředno-zpětného algoritmu z kapitoly \ref{ch:fwbw}, ve kterém byl změněn gradient problému. Pro takto upravený algoritmus nejsou výsledky optimální, jako v případě $l_{2}^{2}$ LASSO problému, nicméně algoritmus úspěšně zkonvergoval ke správným hodnotám ve 35 případech ze 100.
+
+
+\section{Aplikace Monte Carlo simulace na výsledek CVX minimalizace}
+Takto připravený skript vytváří empirické pozorování, jako je již vytvořeno v kapitole \ref{ch:simulace}. Získáváme tak graf \ref{fig:l2}, který se v několika bodech podobá již dříve získaným grafům \ref{fig:l22sim}. Pro jednoduchost zde není uvažována varianta s náhodným šumem, jako v předešlém případě.
+
+\begin{lstlisting}
 for i = 1:pocet_opakovani
     y = A*x;
     for j = 1:length(lambda)
         cvx_begin quiet
-	    variable x_n(pocet_prvku)
-	    minimize((norm(y-A*x_n,2)+lambda(j)*norm(x_n,1)))
-	    cvx_end
+        variable x_n(pocet_prvku)
+        minimize((norm(y-A*x_n,2)+lambda(j)*norm(x_n,1)))
+        cvx_end
     end
 end
 \end{lstlisting}
-
-Jak je vidět, tak balík knihoven CVX opravdu velice výrazně zjednodušuje realizaci vybraného problému. Vše začíná příkazem \uv{cvx\_begin}, který deklaruje začátek deklarací a funkcí. Zde je využito varianty s parametrem \uv{quiet}, aby byl potlačen výpis částečných výsledků během opakování této části skriptu. Následně je deklarována proměnná $x_n$, přes kterou se minimalizuje zadaný problém a to o předem daném počtu prvků. Poté již následuje příkaz \uv{minimize}, kterému se deklaruje funkce, kterou chceme minimalizovat. V této funkci je využita standardní funkce \uv{norm} a to jak pro zápis $\left\| y - A \times x_n\right\|_2$, tak pro $ \left\| x \right\|_1  $, která je ještě zvětšena, resp. zmenšena, j prvkem z vektoru parametrů $\lambda$. Vše je uzavřeno druhou polovinou párového příkazu a to příkazem \uv{cvx\_end}.
-
-Takto připravený skript vytváří empirické pozorování, jako je již vytvořeno v kapitole \ref{ch:simulace}. Získáváme tak graf \ref{fig:l2}, který se v několika bodech podobá již dříve získaným grafům \ref{fig:l22sim}. Pro jednoduchost zde není uvažována varianta s náhodným šumem, jako v předešlém případě.
 
 \begin{figure}[!ht]
 	\begin{center}

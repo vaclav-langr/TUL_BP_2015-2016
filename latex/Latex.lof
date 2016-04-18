@@ -13,5 +13,6 @@
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Struktura dat\relax }}{25}{figure.caption.10}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Simulace pro $l_{2}^{2}$ LASSO\relax }}{26}{figure.caption.11}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Kvadratick\IeC {\'a} chyba \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } probl\IeC {\'e}mu $l_2$ LASSO\relax }}{29}{figure.caption.12}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Porovn\IeC {\'a}n\IeC {\'\i } CVX v\IeC {\'y}sledku s proxim\IeC {\'a}ln\IeC {\'\i }m algoritmem\relax }}{28}{figure.caption.12}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Kvadratick\IeC {\'a} chyba \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } probl\IeC {\'e}mu $l_2$ LASSO\relax }}{30}{figure.caption.13}
 \addvspace {10\p@ }
