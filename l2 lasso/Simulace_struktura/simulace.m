@@ -49,11 +49,13 @@ if vstup == 0
 end
 
 for i = startI:struktura.nastaveni.pocet_opakovani
-    y_orig = struktura.A(:,:,i)*struktura.x_orig;
+    sum = random('normal', 0, 10^-(4), struktura.nastaveni.pocet_radku, 1);
+    y_orig = struktura.A(:,:,i)*struktura.x_orig + sum;
     for j = 1:struktura.nastaveni.pocet_tau
 %         disp([i j])
         x_compute = ForwardBackward(y_orig,struktura.A(:,:,i),struktura.tau(j),struktura.nastaveni.odchylka,struktura.nastaveni.max_iter);
         struktura.kroky(i, j) = norm(struktura.x_orig - x_compute, 2)^2;
+        struktura.kroky(i, j) = struktura.kroky(i, j) / mean(sum.^2);
     end
     save(struktura.nastaveni.nazev_zalohy, 'struktura', 'i');
 end
