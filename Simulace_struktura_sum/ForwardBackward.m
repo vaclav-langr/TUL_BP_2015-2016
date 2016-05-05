@@ -1,7 +1,7 @@
 function [ x_n ] = ForwardBackward( y, A, tau, odchylka, kroky )
 x_n = zeros(size(A, 2), 1);
 
-alfa = 0.1;
+alfa = 0.01;
 
 for i = 1:kroky
     grad = -2*A'*(y-A*x_n);

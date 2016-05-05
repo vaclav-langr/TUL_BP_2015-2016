@@ -35,7 +35,7 @@ for j = 1:pocet_testu
 
     %Krok 4
     x_n = zeros(pocet_prvku,1);
-    kroky = 20000;
+    kroky = 10000;
 
     tau = 0.1;
     odchylka = 10^(-6);
@@ -49,14 +49,14 @@ for j = 1:pocet_testu
         x_n_1 = x_n;
         x_n = x_n + 1*(prox(tau*alfa,y_n)-x_n);
 
-        if (podminka1(x_n, y_orig, A, tau, odchylka))
-            if (podminka2(x_n, y_orig, A, tau, odchylka))
-                if (any(isnan(x_n)))
-                    x_n = x_n_1;
-                end
-                break
-            end
-        end
+%         if (podminka1(x_n, y_orig, A, tau, odchylka))
+%             if (podminka2(x_n, y_orig, A, tau, odchylka))
+%                 if (any(isnan(x_n)))
+%                     x_n = x_n_1;
+%                 end
+%                 break
+%             end
+%         end
         
         s = x_n - x_n_1;
         alfa = 1 / (((sum(abs(A'*A*s)))^2)/((sum(abs(A*s)))^2));

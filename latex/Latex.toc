@@ -7,14 +7,19 @@
 \contentsline {chapter}{\numberline {4}Dop\IeC {\v r}edno-zp\IeC {\v e}tn\IeC {\'y} algoritmus}{17}{chapter.4}
 \contentsline {section}{\numberline {4.1}D\IeC {\'e}lka kroku algoritmu}{19}{section.4.1}
 \contentsline {section}{\numberline {4.2}Podm\IeC {\'\i }nky optimality}{20}{section.4.2}
-\contentsline {section}{\numberline {4.3}Kone\IeC {\v c}n\IeC {\'a} verze algoritmu}{21}{section.4.3}
+\contentsline {section}{\numberline {4.3}Kone\IeC {\v c}n\IeC {\'a} verze algoritmu}{22}{section.4.3}
 \contentsline {chapter}{\numberline {5}Anal\IeC {\'y}za chyby \IeC {\v r}e\IeC {\v s}en\IeC {\'\i }}{23}{chapter.5}
 \contentsline {section}{\numberline {5.1}Realizace simulace}{23}{section.5.1}
-\contentsline {section}{\numberline {5.2}Interakce s u\IeC {\v z}ivatelem}{24}{section.5.2}
-\contentsline {section}{\numberline {5.3}V\IeC {\'y}sledek pro $l_{2}^{2}$ LASSO}{26}{section.5.3}
-\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{27}{chapter.6}
-\contentsline {section}{\numberline {6.1}Rekonstrukce dat pomoc\IeC {\'\i } CVX knihoven}{27}{section.6.1}
-\contentsline {section}{\numberline {6.2}Aplikace Monte Carlo simulace na v\IeC {\'y}sledek CVX minimalizace}{29}{section.6.2}
-\contentsline {section}{\numberline {6.3}Aplikov\IeC {\'a}n\IeC {\'\i } mapovac\IeC {\'\i } funkce na analytickou p\IeC {\v r}edpov\IeC {\v e}\IeC {\v d} $l_{2}$ LASSO}{30}{section.6.3}
-\contentsline {section}{\numberline {6.4}Porovn\IeC {\'a}n\IeC {\'\i } empirick\IeC {\'y}ch v\IeC {\'y}sledk\IeC {\r u} a analytick\IeC {\'e} p\IeC {\v r}edpov\IeC {\v e}di}{30}{section.6.4}
-\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{31}{chapter.7}
+\contentsline {section}{\numberline {5.2}Z\IeC {\'a}lohov\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{25}{section.5.2}
+\contentsline {section}{\numberline {5.3}Upozorn\IeC {\v e}n\IeC {\'\i } u\IeC {\v z}ivatele}{27}{section.5.3}
+\contentsline {section}{\numberline {5.4}V\IeC {\'y}sledek pro $\left \delimiter "026B30D \cdot \right \delimiter "026B30D _{2}^{2}$ LASSO}{28}{section.5.4}
+\contentsline {chapter}{\numberline {6}V\IeC {\'y}sledky}{30}{chapter.6}
+\contentsline {section}{\numberline {6.1}Rekonstrukce dat s vyu\IeC {\v z}it\IeC {\'\i }m proxim\IeC {\'a}ln\IeC {\'\i }ho algoritmu}{30}{section.6.1}
+\contentsline {section}{\numberline {6.2}Rekonstrukce dat pomoc\IeC {\'\i } CVX knihoven}{32}{section.6.2}
+\contentsline {section}{\numberline {6.3}Analytick\IeC {\'a} p\IeC {\v r}edpov\IeC {\v e}\IeC {\v d} pro $\left \delimiter "026B30D \cdot \right \delimiter "026B30D _{2}$ LASSO}{34}{section.6.3}
+\contentsline {section}{\numberline {6.4}Aplikace Monte Carlo simulace na minimalizace}{35}{section.6.4}
+\contentsline {section}{\numberline {6.5}Aplikov\IeC {\'a}n\IeC {\'\i } mapovac\IeC {\'\i } funkce na analytickou p\IeC {\v r}edpov\IeC {\v e}\IeC {\v d} $\left \delimiter "026B30D \cdot \right \delimiter "026B30D _{2}$ LASSO}{39}{section.6.5}
+\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{40}{chapter.7}
+\contentsline {chapter}{P\IeC {\v r}\IeC {\'\i }lohy}{43}{chapter*.18}
+\contentsline {section}{P\IeC {\v r}\IeC {\'\i }loha A: Obsah p\IeC {\v r}ilo\IeC {\v z}en\IeC {\'e}ho CD}{43}{appendix*.19}
+\contentsline {section}{P\IeC {\v r}\IeC {\'\i }loha B: Fin\IeC {\'a}ln\IeC {\'\i } podoba algoritmu}{44}{appendix*.19}

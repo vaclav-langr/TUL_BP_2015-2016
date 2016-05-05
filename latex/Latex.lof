@@ -2,17 +2,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h zvolen\IeC {\'e}ho proxim\IeC {\'a}ln\IeC {\'\i }ho oper\IeC {\'a}toru pro $\lambda $ = 0.5\relax }}{16}{figure.caption.4}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h zvolen\IeC {\'e}ho proxim\IeC {\'a}ln\IeC {\'\i }ho oper\IeC {\'a}toru pro $\lambda $ = 0,5\relax }}{16}{figure.caption.4}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Sch\IeC {\'e}ma dop\IeC {\v r}edno-zp\IeC {\v e}tn\IeC {\'e}ho algoritmu\relax }}{17}{figure.caption.5}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Uk\IeC {\'a}zka pr\IeC {\r u}b\IeC {\v e}hu algoritmu p\IeC {\v r}i nevhodn\IeC {\v e} zvolen\IeC {\'e}m parametru $\lambda $\relax }}{18}{figure.caption.6}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Uk\IeC {\'a}zka pr\IeC {\r u}b\IeC {\v e}hu algoritmu p\IeC {\v r}i r\IeC {\r u}zn\IeC {\'e} volb\IeC {\v e} d\IeC {\'e}lky kroku\relax }}{19}{figure.caption.7}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Uk\IeC {\'a}zka pr\IeC {\r u}b\IeC {\v e}hu algoritmu s dynamickou d\IeC {\'e}lkou kroku\relax }}{20}{figure.caption.8}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Uk\IeC {\'a}zka pr\IeC {\r u}b\IeC {\v e}hu algoritmu p\IeC {\v r}i nevhodn\IeC {\v e} zvolen\IeC {\'e}m parametru $\lambda $\relax }}{19}{figure.caption.6}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Uk\IeC {\'a}zka pr\IeC {\r u}b\IeC {\v e}hu algoritmu p\IeC {\v r}i r\IeC {\r u}zn\IeC {\'e} volb\IeC {\v e} d\IeC {\'e}lky kroku\relax }}{20}{figure.caption.7}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Uk\IeC {\'a}zka pr\IeC {\r u}b\IeC {\v e}hu algoritmu s dynamickou d\IeC {\'e}lkou kroku\relax }}{21}{figure.caption.8}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Simulace Monte Carlo\relax }}{24}{figure.caption.9}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Struktura dat\relax }}{25}{figure.caption.10}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Simulace pro $l_{2}^{2}$ LASSO\relax }}{26}{figure.caption.11}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Struktura dat\relax }}{26}{figure.caption.10}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Upraven\IeC {\'a} struktura pro pozd\IeC {\v e}j\IeC {\v s}\IeC {\'\i } vyu\IeC {\v z}it\IeC {\'\i }\relax }}{26}{figure.caption.11}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Simulace pro $\left \delimiter "026B30D \cdot \right \delimiter "026B30D _{2}^{2}$ LASSO\relax }}{29}{figure.caption.12}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Porovn\IeC {\'a}n\IeC {\'\i } CVX v\IeC {\'y}sledku s proxim\IeC {\'a}ln\IeC {\'\i }m algoritmem\relax }}{28}{figure.caption.12}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Kvadratick\IeC {\'a} chyba \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } probl\IeC {\'e}mu $l_2$ LASSO\relax }}{30}{figure.caption.13}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Prvn\IeC {\'\i } experiment s $\left \delimiter "026B30D \cdot \right \delimiter "026B30D _{2}$ LASSO\relax }}{31}{figure.caption.13}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Druh\IeC {\'y} experiment s $\left \delimiter "026B30D \cdot \right \delimiter "026B30D _{2}$ LASSO\relax }}{32}{figure.caption.14}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Porovn\IeC {\'a}n\IeC {\'\i } CVX v\IeC {\'y}sledku s proxim\IeC {\'a}ln\IeC {\'\i }m algoritmem\relax }}{33}{figure.caption.15}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Porovn\IeC {\'a}n\IeC {\'\i } simulac\IeC {\'\i }\relax }}{36}{figure.caption.16}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Porovn\IeC {\'a}n\IeC {\'\i } analytick\IeC {\'e} p\IeC {\v r}edpov\IeC {\v e}di s v\IeC {\'y}sledkem Monte Carlo simulace\relax }}{38}{figure.caption.17}
 \addvspace {10\p@ }

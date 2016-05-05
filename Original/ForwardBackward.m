@@ -2,9 +2,8 @@ clear all
 close all
 clc
 
-video = 1;
-obrazky = 0;
-ulozit_tabulka = 0;
+video = 0;
+obrazky = 1;
 
 pocet_testu = 1;
 pocet_prvku = 100;
@@ -17,9 +16,6 @@ if video == 1
     open(v)
     f = figure('units','normalized','outerposition',[0 0 1 1], 'Visible', 'off');
 % f = figure();
-end
-if ulozit_tabulka == 1
-    tabulka = zeros(pocet_testu,pocet_prvku);
 end
 
 for j = 1:pocet_testu
@@ -38,10 +34,10 @@ for j = 1:pocet_testu
     x_n = zeros(pocet_prvku,1);
     kroky = 5000;
 
-    tau = 0.1;
+    tau = 100;
     odchylka = 10^(-6);
     
-    alfa = 0.001;
+    alfa = 0.1;
     
     for i = 1:kroky        
         grad = -2*A'*(y_orig-A*x_n);
@@ -59,7 +55,8 @@ for j = 1:pocet_testu
         end
         
         s = x_n - x_n_1;
-        alfa = 1 / (((sum(abs(A'*A*s)))^2)/((sum(abs(A*s)))^2));
+%         alfa = 1 / (((sum(abs(A'*A*s)))^2)/((sum(abs(A*s)))^2));
+        alfa = 0.9/((norm(A'*A*s)^2)/(norm(A*s)^2));
         
         if video == 1
             plot(x_orig,'LineWidth',3)
@@ -73,12 +70,9 @@ for j = 1:pocet_testu
             drawnow
             writeVideo(v,getframe(f))
         elseif obrazky == 1
-            plot(x_orig, 'LineWidth',3)
+            plot(x_orig)
             hold on
-            plot(x_n, 'r', 'LineWidth',3)
-            xlabel('indexes of data [-]')
-            ylabel('value of data [-]')
-            legend('original data', 'computed data')
+            plot(x_n, 'r')
             title(num2str(i))
             hold off
             drawnow
@@ -86,7 +80,7 @@ for j = 1:pocet_testu
         
     end
     
-    if video == 1 && j == pocet_kroku
+    if video == 1 && j == kroky
         close(v)
     elseif obrazky == 1
         xlabel('indexes of data [-]')
@@ -95,17 +89,9 @@ for j = 1:pocet_testu
         title(num2str(i))
         pause
     end
-    if ulozit_tabulka == 1
-        tabulka(j*2-1,:) = x_orig';
-        tabulka(j*2,:) = x_n';
-    end
 
-end
-if ulozit_tabulka == 1
-    delete('tabulka.xlsx');
-    xlswrite('tabulka.xlsx',tabulka);
 end
 if obrazky == 1
     close all
 end
-clear f grad i kroky pocet_prvku radku tabulka tau y_n j pocet_testu x_n_1 obrazky video ulozit_tabulka alfa odchylka podminka1 podminka2 s w spol
+clear f grad i kroky pocet_prvku radku tau y_n j pocet_testu x_n_1 obrazky video ulozit_tabulka alfa odchylka podminka1 podminka2 s w spol

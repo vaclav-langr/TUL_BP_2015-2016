@@ -5,9 +5,15 @@
 \contentsline {myequations}{\numberline {}\ref {eq:norma} - V\IeC {\'y}po\IeC {\v c}et normy}{14}{equation.2.1.1}
 \contentsline {myequations}{\numberline {}\ref {eq:proxAlg} - Z\IeC {\'a}pis proxim\IeC {\'a}ln\IeC {\'\i }ho algoritmu}{15}{equation.3.0.1}
 \contentsline {myequations}{\numberline {}\ref {eq:soft} - M\IeC {\v e}kk\IeC {\'e} prahov\IeC {\'a}n\IeC {\'\i }}{16}{equation.3.1.1}
-\contentsline {myequations}{\numberline {}\ref {eq:GradientLASSO} - Derivace funkce $\left \delimiter "026B30D y - A \times x\right \delimiter "026B30D _{2}^{2}$ }{17}{equation.4.0.1}
+\contentsline {myequations}{\numberline {}\ref {eq:GradientLASSO} - Derivace funkce $\left \delimiter "026B30D y - A \times x\right \delimiter "026B30D _{2}^{2}$ }{18}{equation.4.0.1}
 \contentsline {myequations}{\numberline {}\ref {eq:ComputeX} - V\IeC {\'y}po\IeC {\v c}et nov\IeC {\'y}ch dat $x$}{18}{equation.4.0.1}
 \contentsline {myequations}{\numberline {}\ref {eq:ComputeAlpha} - V\IeC {\'y}po\IeC {\v c}et d\IeC {\'e}lky kroku $\alpha $}{20}{equation.4.1.1}
 \contentsline {myequations}{\numberline {}\ref {eq:homotopy1} - Podm\IeC {\'\i }nka optimality pro nenulov\IeC {\'e} prvky}{21}{equation.4.2.1}
-\contentsline {myequations}{\numberline {}\ref {eq:homotopy2} - Podm\IeC {\'\i }nka optimality pro nulov\IeC {\'e} prvky}{21}{equation.4.2.1}
-\contentsline {myequations}{\numberline {}\ref {eq:l2Grad} - Gradient $l_2 $ LASSO}{27}{equation.6.1.1}
+\contentsline {myequations}{\numberline {}\ref {eq:homotopy2} - Podm\IeC {\'\i }nka optimality pro nulov\IeC {\'e} prvky}{22}{equation.4.2.1}
+\contentsline {myequations}{\numberline {}\ref {eq:l2Grad} - Gradient $\left \delimiter "026B30D \cdot \right \delimiter "026B30D _{2}$ LASSO}{30}{equation.6.1.1}
+\contentsline {myequations}{\numberline {}\ref {eq:analyza} - Funkce pro vytvo\IeC {\v r}en\IeC {\'\i } analytick\IeC {\'e} p\IeC {\v r}edpov\IeC {\v e}di}{34}{equation.6.3.1}
+\contentsline {myequations}{\numberline {}\ref {eq:subdif} - Subdiferenci\IeC {\'a}l $\left \delimiter "026B30D \cdot \right \delimiter "026B30D _1$}{35}{equation.6.3.1}
+\contentsline {myequations}{\numberline {}\ref {eq:quad} - Prom\IeC {\v e}nn\IeC {\'e} analytick\IeC {\'e} p\IeC {\v r}edpov\IeC {\v e}di pro kvadratick\IeC {\'e} programov\IeC {\'a}n\IeC {\'\i }}{35}{equation.6.3.1}
+\contentsline {myequations}{\numberline {}\ref {eq:NSE} - Normalizovan\IeC {\'a} chyba nalezen\IeC {\'e}ho \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } od spr\IeC {\'a}vn\IeC {\'e}ho}{37}{equation.6.4.1}
+\contentsline {myequations}{\numberline {}\ref {eq:analytic} - Funkce pro vykreslen\IeC {\'\i } analytick\IeC {\'e} k\IeC {\v r}ivky}{38}{equation.6.4.1}
+\contentsline {myequations}{\numberline {}\ref {eq:map} - Mapovac\IeC {\'\i } funkce}{39}{equation.6.5.1}

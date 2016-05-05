@@ -8,6 +8,7 @@
 \title{Řešení optimalizační úlohy LASSO pomocí proximálních algoritmů}
 %
 \author{Václav Langr}
+\supervisor{doc. Ing. Zbyněk Koldovský, Ph.D.}
 % 
 \date{\today} %14.\,1.\,2015} % předefinování data
 % Textový obsah pod linkou na titulní straně
@@ -27,9 +28,6 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |}
 \section{Info}
 \begin{frame}
 	\vfill
-	\begin{block}{Vedoucí práce}
-	    doc. Ing. Zbyněk Koldovský, Ph.D.
-	\end{block}
 	\begin{block}{Cíl práce}
     \begin{itemize}
         \item Nastudovat vlastnosti optimalizační úlohy LASSO
@@ -43,20 +41,20 @@ Studentská 2 {\color{FM_TUL} |} 461\,17 Liberec 2 {\color{FM_TUL} |}
 \begin{frame}
 	\vfill
 	\begin{block}{Základní měření signálů}
-	$y = A \times x + z$
+	$\vec{y} = A \cdot \vec{x} + \vec{z}$
 	\end{block}
 	\begin{block}{Optimalizační úloha LASSO}
-		$\underset{x} {\mathrm{argmin}} ~\left\{\left\|y-A \times x\right\| ^2 _2+ \lambda \times \left\|x\right\|_1\right\}$
+		$\underset{x} {\mathrm{argmin}} ~\left\{\left\|\vec{y}-A \cdot \vec{x}\right\| ^2 _2+ \lambda \cdot \left\|\vec{x}\right\|_1\right\}$
 	\end{block}
 \end{frame}
 \section{Proximální algoritmus}
 \begin{frame}
 	\vfill
 	\begin{block}{Derivace $\left\| \cdot \right\|_{2}^{2} $}
-		$\partial f(x) = -2 \times A^T \times (y-A \times x)$
+		$\partial f(\vec{x}) = -2 \cdot A^T \cdot (\vec{y}-A \cdot \vec{x})$
 	\end{block}
 			\begin{block}{Proximální algoritmus}
-				$x_{n+1} = prox_{\lambda \times step}(x_{n}- step \times \partial f(x_{n}))$
+				$x_{n+1} = prox_{\lambda \cdot step}(\vec{x_{n}}- step \cdot \partial f(\vec{x_{n}}))$
 			\end{block}
 \end{frame}
 \begin{frame}

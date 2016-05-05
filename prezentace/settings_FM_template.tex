@@ -1,4 +1,4 @@
-% Nastavení šablony FM TUL
+% Nastavenï¿½ ï¿½ablony FM TUL
 % nastaveni prezentace
 %\documentclass[draft]{beamer}
 \documentclass[t]{beamer}
@@ -27,12 +27,12 @@
 %\setsansfont{Times New Roman}
 %====
 
-% bohužel další fonty nejsou plnì poèeštìné, tedy nejde bez obtíží kopírovat z PDF
+% bohuï¿½el dalï¿½ï¿½ fonty nejsou plnï¿½ poï¿½eï¿½tï¿½nï¿½, tedy nejde bez obtï¿½ï¿½ï¿½ kopï¿½rovat z PDF
 
 %\usepackage{times}
 % \usepackage{avant}
 % \usepackage{bookman}
-% \usepackage{helvet}  %chybí tuèný øez u strojového písma
+% \usepackage{helvet}  %chybï¿½ tuï¿½nï¿½ ï¿½ez u strojovï¿½ho pï¿½sma
 % \usepackage{newcent}
 % \usepackage{palatino} 
 
@@ -50,38 +50,40 @@
   
   \useinnertheme{rectangles}
   
-  % VNÌJŠÍ BAREVNÉ TÉMA NADPISÙ    
+  % VNï¿½Jï¿½ï¿½ BAREVNï¿½ Tï¿½MA NADPISï¿½    
   \usecolortheme{whale}  
   
-  % VNITØNÍ BAREVNÉ TÉMA VÝÈTÙ, BLOKÙ ATD.  
+  % VNITï¿½Nï¿½ BAREVNï¿½ Tï¿½MA Vï¿½ï¿½Tï¿½, BLOKï¿½ ATD.  
   \usecolortheme{orchid}
 
   \setbeamercolor{titlelike}{parent=structure}
   \setbeamercolor{frametitle}{fg=black}
   \setbeamercolor{title}{fg=black}
   \setbeamercolor{item}{fg=FM_TUL} 
-  \setbeamertemplate{navigation symbols}{} % potlaèení navigaèních symbolù
-  \setbeamercolor{block title}{fg=white,bg=FM_TUL} % pøedefinování barvy zákl. bloku
+  \setbeamertemplate{navigation symbols}{} % potlaï¿½enï¿½ navigaï¿½nï¿½ch symbolï¿½
+  \setbeamercolor{block title}{fg=white,bg=FM_TUL} % pï¿½edefinovï¿½nï¿½ barvy zï¿½kl. bloku
   \setbeamercolor{caption name}{fg=FM_TUL}
   
-%  Nadpisy slidù tuènì dokud nevyøeším použití fontù tak, aby se dalo kopírovat z pdf
+%  Nadpisy slidï¿½ tuï¿½nï¿½ dokud nevyï¿½eï¿½ï¿½m pouï¿½itï¿½ fontï¿½ tak, aby se dalo kopï¿½rovat z pdf
 %  \setbeamercolor{frametitle}{fg=FM_TUL}
   \setbeamertemplate{frametitle}
   {
     \textbf{\insertframetitle}
     \par
   }
-  \setbeamercolor{bibliography entry author}{fg=black} % literatura èernì a ne modøe
-  \setbeamercolor{bibliography entry title}{fg=black} % literatura èernì a ne modøe
-  \setbeamercolor{bibliography entry journal}{fg=black} % literatura èernì a ne modøe
-  \setbeamercolor{bibliography entry note}{fg=black} % literatura èernì a ne modøe
+  \setbeamercolor{bibliography entry author}{fg=black} % literatura ï¿½ernï¿½ a ne modï¿½e
+  \setbeamercolor{bibliography entry title}{fg=black} % literatura ï¿½ernï¿½ a ne modï¿½e
+  \setbeamercolor{bibliography entry journal}{fg=black} % literatura ï¿½ernï¿½ a ne modï¿½e
+  \setbeamercolor{bibliography entry note}{fg=black} % literatura ï¿½ernï¿½ a ne modï¿½e
   
-%Nefunguje  \setbeamercolor{tableofcontents}{fg=TUL_FM} % obsah TUL_FM a ne modøe
+%Nefunguje  \setbeamercolor{tableofcontents}{fg=TUL_FM} % obsah TUL_FM a ne modï¿½e
 }
 
 %===============================================================================
-% TITULNÍ STRANA
+% TITULNï¿½ STRANA
 %===============================================================================
+\newcommand{\insertsupervisor}{}
+\newcommand{\supervisor}[1]{\renewcommand{\insertsupervisor}{#1}}
 \setbeamertemplate{title page}{
 \begin{flushleft}
    \includegraphics[width=0.6\textwidth]{obr/logo-fm-cmyk-cz.pdf}
@@ -97,9 +99,11 @@
       \insertsubtitle
   \end{beamercolorbox}
 %
+  {\bf \small  \insertsupervisor}
   \vspace{10pt}
-  {\bf \small \insertauthor {\color{FM_TUL}}}
-%  \vspace{10pt}    
+  
+  {\bf \small \insertauthor}
+  \vspace{10pt}    
 \end{center}
 %
 \vfill
@@ -112,9 +116,9 @@
 \end{center}   
 }
 %===============================================================================
-% ZÁHLAVÍ KAŽDÉHO SLAJDU
+% Zï¿½HLAVï¿½ KAï¿½Dï¿½HO SLAJDU
 %===============================================================================
-\setbeamertemplate{headline}{
+\setbeamertemplate{heade}{
   \hspace{-3pt}\includegraphics[width=0.3\textwidth]{obr/logo-fm-cmyk-cz.pdf}
 }
 %===============================================================================
@@ -128,7 +132,7 @@
 \vspace{3pt}
 }
 %===============================================================================
-% ÚPRAVA BARVY TEXTU V OBSAHU 
+% ï¿½PRAVA BARVY TEXTU V OBSAHU 
 %===============================================================================
 \setbeamercolor{section in toc}{fg=black}
 \setbeamercolor{subsection in toc}{fg=black}

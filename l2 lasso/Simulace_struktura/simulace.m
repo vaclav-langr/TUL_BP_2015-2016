@@ -49,7 +49,7 @@ if vstup == 0
 end
 
 for i = startI:struktura.nastaveni.pocet_opakovani
-    sum = random('normal', 0, 10^-(4), struktura.nastaveni.pocet_radku, 1);
+    sum = random('normal', 0, 10^-(2), struktura.nastaveni.pocet_radku, 1);
     y_orig = struktura.A(:,:,i)*struktura.x_orig + sum;
     for j = 1:struktura.nastaveni.pocet_tau
 %         disp([i j])
