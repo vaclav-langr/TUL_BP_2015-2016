@@ -3,7 +3,7 @@ close all
 clc
 
 video = 0;
-obrazky = 1;
+obrazky = 0;
 
 pocet_testu = 1;
 pocet_prvku = 100;
@@ -34,7 +34,7 @@ for j = 1:pocet_testu
     x_n = zeros(pocet_prvku,1);
     kroky = 5000;
 
-    tau = 100;
+    tau = 0.1;
     odchylka = 10^(-6);
     
     alfa = 0.1;

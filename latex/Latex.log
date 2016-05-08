@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.2)  5 MAY 2016 07:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.2)  8 MAY 2016 11:32
 entering extended mode
 **./Latex.tex
 (Latex.tex
@@ -2275,7 +2275,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count142
- <logo-fm.pdf, id=100, 254.6062pt x 45.03696pt>
+ <logo-fm.pdf, id=108, 254.6062pt x 45.03696pt>
 File: logo-fm.pdf Graphic file (type pdf)
 
 <use logo-fm.pdf>
@@ -2284,7 +2284,7 @@ Package pdftex.def Info: logo-fm.pdf used on input line 25.
  [1
 
  <./logo-fm.pdf>]
-<logo-fm-en.pdf, id=112, 262.84398pt x 44.71245pt>
+<logo-fm-en.pdf, id=120, 262.84398pt x 44.71245pt>
 File: logo-fm-en.pdf Graphic file (type pdf)
  <use logo-fm-en.pdf>
 Package pdftex.def Info: logo-fm-en.pdf used on input line 25.
@@ -2360,393 +2360,402 @@ Kapitola 2.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.128 \chapter
-              {Proximální algoritmy}pdfTeX warning (ext4): destination with t
-he same identifier (name{equation.2.1.1}) has been already used, duplicate igno
-red
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.128 \chapter
+l.122 \chapter
               {Proximální algoritmy}]
 Kapitola 3.
 [15
 
-] <obr/threshhold.pdf, id=299, 529.28079pt x 385.4892pt>
+] <obr/threshhold.pdf, id=307, 529.28079pt x 385.4892pt>
 File: obr/threshhold.pdf Graphic file (type pdf)
 
 <use obr/threshhold.pdf>
-Package pdftex.def Info: obr/threshhold.pdf used on input line 160.
+Package pdftex.def Info: obr/threshhold.pdf used on input line 154.
 (pdftex.def)             Requested size: 370.49402pt x 269.84059pt.
- [16 <./obr/threshhold.pdf>]
+ [16] [17 <./obr/threshhold.pdf>]
 Kapitola 4.
 
 
 pdfTeX warning: pdflatex.exe (file ./obr/forwardbackward.pdf): PDF inclusion: f
 ound PDF version <1.6>, but at most version <1.4> allowed
-<obr/forwardbackward.pdf, id=311, 407.63884pt x 296.75568pt>
+<obr/forwardbackward.pdf, id=323, 407.63884pt x 296.75568pt>
 File: obr/forwardbackward.pdf Graphic file (type pdf)
 
 <use obr/forwardbackward.pdf>
-Package pdftex.def Info: obr/forwardbackward.pdf used on input line 171.
+Package pdftex.def Info: obr/forwardbackward.pdf used on input line 165.
 (pdftex.def)             Requested size: 346.49464pt x 252.2435pt.
- [17
+ [18
 
  <./obr/forwardbackward.pdf>]
-<obr/lambda.pdf, id=326, 597.23125pt x 329.02725pt>
+<obr/lambda.pdf, id=338, 597.23125pt x 329.02725pt>
 File: obr/lambda.pdf Graphic file (type pdf)
  <use obr/lambda.pdf>
-Package pdftex.def Info: obr/lambda.pdf used on input line 199.
+Package pdftex.def Info: obr/lambda.pdf used on input line 193.
 (pdftex.def)             Requested size: 430.00616pt x 236.89943pt.
 
-Overfull \hbox (3.21483pt too wide) in paragraph at lines 199--200
+Overfull \hbox (3.21483pt too wide) in paragraph at lines 193--194
  [] 
  []
 
-<obr/basic.pdf, id=327, 740.07982pt x 396.86308pt>
-File: obr/basic.pdf Graphic file (type pdf)
- <use obr/basic.pdf>
-Package pdftex.def Info: obr/basic.pdf used on input line 213.
-(pdftex.def)             Requested size: 421.84988pt x 226.2143pt.
- [18pdfTeX warning (ext4): destination with the same identifier (name{equation.
-4.0.1}) has been already used, duplicate ignored
+[19pdfTeX warning (ext4): destination with the same identifier (name{equation.4
+.0.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.218 
-      ] [19 <./obr/lambda.pdf>]
-<obr/dynamic.pdf, id=346, 543.45276pt x 385.4892pt>
+l.205 
+      ] <obr/basic.pdf, id=344, 740.07982pt x 396.86308pt>
+File: obr/basic.pdf Graphic file (type pdf)
+ <use obr/basic.pdf>
+Package pdftex.def Info: obr/basic.pdf used on input line 208.
+(pdftex.def)             Requested size: 407.04517pt x 218.27536pt.
+
+[20 <./obr/lambda.pdf>] <obr/dynamic.pdf, id=360, 543.45276pt x 385.4892pt>
 File: obr/dynamic.pdf Graphic file (type pdf)
- <use obr/dynamic.pdf>
-Package pdftex.def Info: obr/dynamic.pdf used on input line 233.
+
+<use obr/dynamic.pdf>
+Package pdftex.def Info: obr/dynamic.pdf used on input line 232.
 (pdftex.def)             Requested size: 380.41434pt x 269.84059pt.
-
-Overfull \hbox (0.64545pt too wide) in paragraph at lines 241--242
-\OT1/cmr/m/n/12 casem. V horsch prpadech by vsak mohlo dojt i k di-ve
-r-genci al-go-ritmu z jakehokoliv
- []
-
-
-Overfull \hbox (10.2727pt too wide) in paragraph at lines 243--244
+ [21 <./obr/basic.pdf, page is rotated 90 degrees>]
+Overfull \hbox (10.2727pt too wide) in paragraph at lines 242--243
 []\OT1/cmr/m/n/12 Dynamicka volba kroku je zalozena na vypoctu rozdlu akt
 ualnho a predchozho
  []
 
-[20 <./obr/basic.pdf, page is rotated 90 degrees>] [21 <./obr/dynamic.pdf>]pdfT
-eX warning (ext4): destination with the same identifier (name{equation.4.2.1}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.255 \begin{equation}
-                       \label{eq:homotopy2}  \tag{Vzorec \theVzorce}
-Overfull \hbox (15.03595pt too wide) in paragraph at lines 264--265
+[22 <./obr/dynamic.pdf>]
+Overfull \hbox (15.03595pt too wide) in paragraph at lines 267--268
 \OT1/cmr/m/n/12 Po vy-pra-covan techto kroku mohl byt puvodn al-go-rit
 -mus, jehoz di-a-gram byl znazornen
  []
 
-[22]
+[23pdfTeX warning (ext4): destination with the same identifier (name{equation.4
+.2.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.268 
+      ] [24]
 Kapitola 5.
-[23
+[25
 
 ]
 
 pdfTeX warning: pdflatex.exe (file ./obr/mcsim.pdf): PDF inclusion: found PDF v
 ersion <1.6>, but at most version <1.4> allowed
-<obr/mcsim.pdf, id=376, 310.9788pt x 252.72519pt>
+<obr/mcsim.pdf, id=396, 310.9788pt x 252.72519pt>
 File: obr/mcsim.pdf Graphic file (type pdf)
  <use obr/mcsim.pdf>
-Package pdftex.def Info: obr/mcsim.pdf used on input line 282.
+Package pdftex.def Info: obr/mcsim.pdf used on input line 285.
 (pdftex.def)             Requested size: 279.87833pt x 227.45056pt.
- [24 <./obr/mcsim.pdf>]
-Overfull \hbox (3.77904pt too wide) in paragraph at lines 298--299
+ [26 <./obr/mcsim.pdf>]
+Overfull \hbox (3.77904pt too wide) in paragraph at lines 301--302
 \OT1/cmr/m/n/12 Onou na-le-ze-nou moznost, jak je zmneno v predchoz ka
 -pi-tole, je prubezne zalohovan
  []
 
 
-Overfull \hbox (3.99396pt too wide) in paragraph at lines 298--299
+Overfull \hbox (3.99396pt too wide) in paragraph at lines 301--302
 \OT1/cmr/m/n/12 jiz ne-bylo mozne po-kracovat v si-mu-laci. Proto byla vy-t
 vorena struk-tura v MATLABu,
  []
 
-<obr/structure.pdf, id=389, 348.1528pt x 258.2187pt>
+<obr/structure.pdf, id=410, 348.1528pt x 258.2187pt>
 File: obr/structure.pdf Graphic file (type pdf)
  <use obr/structure.pdf>
-Package pdftex.def Info: obr/structure.pdf used on input line 302.
+Package pdftex.def Info: obr/structure.pdf used on input line 305.
 (pdftex.def)             Requested size: 243.70529pt x 180.75185pt.
 
-[25] <obr/structure_new.pdf, id=395, 350.83673pt x 258.8571pt>
+[27] <obr/structure_new.pdf, id=415, 350.83673pt x 258.8571pt>
 File: obr/structure_new.pdf Graphic file (type pdf)
 
 <use obr/structure_new.pdf>
-Package pdftex.def Info: obr/structure_new.pdf used on input line 316.
-(pdftex.def)             Requested size: 245.58403pt x 181.19873pt.
- [26 <./obr/structure.pdf> <./obr/structure_new.pdf
-
-pdfTeX warning: pdflatex.exe (file ./obr/structure_new.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
->]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 333.
+Package pdftex.def Info: obr/structure_new.pdf used on input line 319.
+(pdftex.def)             Requested size: 280.66977pt x 207.08595pt.
+ [28 <./obr/structure.pdf>] [29 <./obr/structure_new.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 336.
 
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 333.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 336.
 
-Overfull \hbox (24.40788pt too wide) in paragraph at lines 333--334
+Overfull \hbox (24.40788pt too wide) in paragraph at lines 336--337
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (3.25792pt too wide) in paragraph at lines 337--338
+Overfull \hbox (3.25792pt too wide) in paragraph at lines 340--341
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[27]
-Overfull \hbox (10.3079pt too wide) in paragraph at lines 338--339
+
+Overfull \hbox (10.3079pt too wide) in paragraph at lines 341--342
 [][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (0.42108pt too wide) in paragraph at lines 346--347
+Overfull \hbox (0.42108pt too wide) in paragraph at lines 349--350
 []\OT1/cmr/m/n/12 Prpadne lze za-chytavat vyjimky si-mu-lace, napr.: po
 skozeny sou-bor s ulozenou
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 350.
+(hyperref)                removing `math shift' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\left' on input line 350.
+(hyperref)                removing `\left' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delimiter' on input line 350.
+(hyperref)                removing `\delimiter' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cdot' on input line 350.
+(hyperref)                removing `\cdot' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\right' on input line 350.
+(hyperref)                removing `\right' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delimiter' on input line 350.
+(hyperref)                removing `\delimiter' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 350.
+(hyperref)                removing `subscript' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 350.
+(hyperref)                removing `superscript' on input line 353.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 350.
+(hyperref)                removing `math shift' on input line 353.
 
-<obr/l22simulation.pdf, id=432, 523.61258pt x 311.71255pt>
+[30] <obr/l22simulation.pdf, id=462, 523.61258pt x 311.71255pt>
 File: obr/l22simulation.pdf Graphic file (type pdf)
 
 <use obr/l22simulation.pdf>
-Package pdftex.def Info: obr/l22simulation.pdf used on input line 358.
+Package pdftex.def Info: obr/l22simulation.pdf used on input line 365.
 (pdftex.def)             Requested size: 366.52629pt x 218.1973pt.
- [28] [29 <./obr/l22simulation.pdf>]
+ [31 <./obr/l22simulation.pdf>]
 Kapitola 6.
-[30
+[32
 
-] <obr/l2-firsttry.pdf, id=455, 467.41867pt x 323.00475pt>
+] <obr/l2-firsttry.pdf, id=477, 467.41867pt x 323.00475pt>
 File: obr/l2-firsttry.pdf Graphic file (type pdf)
 
 <use obr/l2-firsttry.pdf>
-Package pdftex.def Info: obr/l2-firsttry.pdf used on input line 384.
+Package pdftex.def Info: obr/l2-firsttry.pdf used on input line 391.
 (pdftex.def)             Requested size: 327.19084pt x 226.10176pt.
 
-<obr/l2-finish.pdf, id=456, 467.41867pt x 323.00475pt>
+<obr/l2-finish.pdf, id=478, 467.41867pt x 323.00475pt>
 File: obr/l2-finish.pdf Graphic file (type pdf)
  <use obr/l2-finish.pdf>
-Package pdftex.def Info: obr/l2-finish.pdf used on input line 394.
+Package pdftex.def Info: obr/l2-finish.pdf used on input line 401.
 (pdftex.def)             Requested size: 327.19084pt x 226.10176pt.
 
-[31 <./obr/l2-firsttry.pdf>] [32 <./obr/l2-finish.pdf>]
-<obr/cvxvsprox.pdf, id=476, 584.48802pt x 334.29694pt>
+[33 <./obr/l2-firsttry.pdf>] [34 <./obr/l2-finish.pdf>]
+<obr/cvxvsprox.pdf, id=497, 584.48802pt x 334.29694pt>
 File: obr/cvxvsprox.pdf Graphic file (type pdf)
  <use obr/cvxvsprox.pdf>
-Package pdftex.def Info: obr/cvxvsprox.pdf used on input line 420.
+Package pdftex.def Info: obr/cvxvsprox.pdf used on input line 427.
 (pdftex.def)             Requested size: 409.13882pt x 234.00626pt.
 
-[33 <./obr/cvxvsprox.pdf>]
+[35 <./obr/cvxvsprox.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 430.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\left' on input line 430.
+(hyperref)                removing `math shift' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delimiter' on input line 430.
+(hyperref)                removing `\left' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cdot' on input line 430.
+(hyperref)                removing `\delimiter' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\right' on input line 430.
+(hyperref)                removing `\cdot' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delimiter' on input line 430.
+(hyperref)                removing `\right' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 430.
+(hyperref)                removing `\delimiter' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 430.
+(hyperref)                removing `subscript' on input line 437.
 
-[34pdfTeX warning (ext4): destination with the same identifier (name{equation.6
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 437.
+
+[36pdfTeX warning (ext4): destination with the same identifier (name{equation.6
 .3.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.454 V
+l.461 V
        ýše zmíněná struktura rozděluje vektor $s$ na tři části a to...
 ]pdfTeX warning (ext4): destination with the same identifier (name{equation.6.3
 .1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.458 \begin{equation}
-                       \label{eq:quad} \tag{Vzorec \theVzorce} [35]
-Overfull \hbox (31.45787pt too wide) in paragraph at lines 484--485
+l.465 \begin{equation}
+                       \label{eq:quad} \tag{Vzorec \theVzorce} [37]
+Overfull \hbox (31.45787pt too wide) in paragraph at lines 491--492
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<obr/sims.pdf, id=506, 487.47661pt x 338.06099pt>
+<obr/sims.pdf, id=528, 487.47661pt x 338.06099pt>
 File: obr/sims.pdf Graphic file (type pdf)
  <use obr/sims.pdf>
-Package pdftex.def Info: obr/sims.pdf used on input line 493.
+Package pdftex.def Info: obr/sims.pdf used on input line 500.
 (pdftex.def)             Requested size: 341.2313pt x 236.64108pt.
- [36 <./obr/sims.pdf>] [37] <obr/analytic.pdf, id=533, 445.27594pt x 328.75824p
+ [38 <./obr/sims.pdf>] [39] <obr/analytic.pdf, id=554, 445.27594pt x 328.75824p
 t>
 File: obr/analytic.pdf Graphic file (type pdf)
 
 <use obr/analytic.pdf>
-Package pdftex.def Info: obr/analytic.pdf used on input line 519.
+Package pdftex.def Info: obr/analytic.pdf used on input line 526.
 (pdftex.def)             Requested size: 311.69102pt x 230.1292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{equation.6.4.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.527 \begin{equation}
-                       \label{eq:analytic}  \tag{Vzorec \theVzorce} [38 <./obr/
+l.534 \begin{equation}
+                       \label{eq:analytic}  \tag{Vzorec \theVzorce} [40 <./obr/
 analytic.pdf>]
-Overfull \hbox (35.97978pt too wide) in paragraph at lines 537--537
+Overfull \hbox (35.97978pt too wide) in paragraph at lines 544--544
  |[]\OT1/cmss/bx/n/17.28 Aplikovan ma-po-vac funkce na ana-ly-tic-kou pre
 dpoved[]
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 537.
+(hyperref)                removing `math shift' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\left' on input line 537.
+(hyperref)                removing `\left' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delimiter' on input line 537.
+(hyperref)                removing `\delimiter' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cdot' on input line 537.
+(hyperref)                removing `\cdot' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\right' on input line 537.
+(hyperref)                removing `\right' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\delimiter' on input line 537.
+(hyperref)                removing `\delimiter' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 537.
+(hyperref)                removing `subscript' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 537.
+(hyperref)                removing `math shift' on input line 544.
 
-[39]
+[41]
 Kapitola 7.
-[40
+[42
 
-] [41]
-Underfull \hbox (badness 2359) in paragraph at lines 565--566
+] [43]
+Underfull \hbox (badness 2359) in paragraph at lines 572--573
 []\OT1/cmr/m/n/12 HASSIBI, Ba-bak. Re-co-ve-ring Structu-red Sig-nals in No-ise
 : Com-pa-ri-son
  []
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 565--566
+Underfull \hbox (badness 1881) in paragraph at lines 572--573
 \OT1/cmr/m/n/12 Lem-mas and the Per-for-mance of Con-vex Re-la-xation Me-thods 
 [on-line].
  []
 
 
-Underfull \hbox (badness 2409) in paragraph at lines 565--566
+Underfull \hbox (badness 2409) in paragraph at lines 572--573
 \OT1/cmr/m/n/12 Ca-li-for-nia In-sti-tute of Tech-no-logy, 2015 [cit. 2016-05-0
 4]. Do-stupne z:
  []
 
 
-Underfull \hbox (badness 2726) in paragraph at lines 566--567
+Underfull \hbox (badness 2726) in paragraph at lines 573--574
 []\OT1/cmr/m/n/12 OYMAK, Sa-met; THRAM-POU-LI-DIS, Chris-tos; HAS-SIBI, Ba-bak.
  The
  []
 
-[42
+[44
 
-] [43
+] [45
 
 
 ]
 
 pdfTeX warning: pdflatex.exe (file ./obr/finalAlg.pdf): PDF inclusion: found PD
 F version <1.6>, but at most version <1.4> allowed
-<obr/finalAlg.pdf, id=571, 467.15327pt x 517.68002pt>
+<obr/finalAlg.pdf, id=592, 467.15327pt x 517.68002pt>
 File: obr/finalAlg.pdf Graphic file (type pdf)
  <use obr/finalAlg.pdf>
-Package pdftex.def Info: obr/finalAlg.pdf used on input line 584.
+Package pdftex.def Info: obr/finalAlg.pdf used on input line 591.
 (pdftex.def)             Requested size: 397.08215pt x 440.03009pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 589.
 
-[44 <./obr/finalAlg.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 589.
+[46 <./obr/finalAlg.pdf>]
+
+pdfTeX warning: pdflatex.exe (file ./obr/diff1.pdf): PDF inclusion: found PDF v
+ersion <1.6>, but at most version <1.4> allowed
+<obr/diff1.pdf, id=610, 440.45113pt x 324.8195pt>
+File: obr/diff1.pdf Graphic file (type pdf)
+ <use obr/diff1.pdf>
+Package pdftex.def Info: obr/diff1.pdf used on input line 601.
+(pdftex.def)             Requested size: 440.45004pt x 324.81871pt.
+
+Overfull \hbox (13.6587pt too wide) in paragraph at lines 601--602
+ [] 
+ []
+
+[47 <./obr/diff1.pdf>] <obr/diff300.pdf, id=619, 522.31715pt x 362.00847pt>
+File: obr/diff300.pdf Graphic file (type pdf)
+
+<use obr/diff300.pdf>
+Package pdftex.def Info: obr/diff300.pdf used on input line 611.
+(pdftex.def)             Requested size: 470.08109pt x 325.8046pt.
+
+Overfull \hbox (43.28975pt too wide) in paragraph at lines 611--612
+ [] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 616.
+[48 <./obr/diff300.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 616.
  (Latex.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 589.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 589.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 616.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 616.
 Package rerunfilecheck Info: File `Latex.out' has not changed.
-(rerunfilecheck)             Checksum: 230D625800E4D8E8E924393CD7F48B54;3641.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 589.
+(rerunfilecheck)             Checksum: 82C8236559A18CCC08F60FF36F86022E;4153.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 616.
  ) 
 Here is how much of TeX's memory you used:
- 16017 strings out of 493634
- 223888 string characters out of 3141297
- 2311078 words of memory out of 4000000
- 18985 multiletter control sequences out of 15000+200000
- 15099 words of font info for 57 fonts, out of 2000000 for 9000
+ 16038 strings out of 493634
+ 224193 string characters out of 3141297
+ 2311123 words of memory out of 4000000
+ 18997 multiletter control sequences out of 15000+200000
+ 15446 words of font info for 58 fonts, out of 2000000 for 9000
  1025 hyphenation exceptions out of 8191
- 43i,15n,54p,1918b,1778s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,15n,54p,1918b,1782s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
@@ -2761,10 +2770,11 @@ KTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Latex.pdf (44 pages, 579076 bytes).
+.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Latex.pdf (48 pages, 604064 bytes).
 PDF statistics:
- 683 PDF objects out of 1000 (max. 8388607)
- 132 named destinations out of 1000 (max. 500000)
- 286 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 726 PDF objects out of 1000 (max. 8388607)
+ 138 named destinations out of 1000 (max. 500000)
+ 312 words of extra memory for PDF output out of 10000 (max. 10000000)
 

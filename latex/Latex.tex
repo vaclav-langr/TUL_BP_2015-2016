@@ -28,13 +28,13 @@ Chtěl bych poděkovat vedoucímu této práce doc. Ing. Zbyňku Koldovskému, P
 \end{acknowledgement}
 \clearpage
 \begin{abstractCZ}
-Tato bakalářská práce je zaměřena na rekonstrukci řídkého vektoru z jeho komprimovaného pozorování. Pro rekonstrukci se využívá optimalizačního problému LASSO a jeho řešení pomocí proximálních algoritmů. Po vytvoření takového algoritmu, který je schopen původní signál rekonstruovat, se využívá metody Monte Carlo pro pozorování závislosti chyby řešení na parametru lambda. U takto získaného výpočtu je zjištěna kvadratická chyba řešení LASSO vzhledem k původnímu vektoru dat, která je následně porovnávána s teoretickou, předpokládanou, chybou.
+Tato bakalářská práce je zaměřena na rekonstrukci řídkého vektoru z jeho komprimovaného pozorování. Pro rekonstrukci se využívá optimalizačního problému LASSO a jeho řešení pomocí proximálních algoritmů. Po vytvoření takového algoritmu, který je schopen původní signál rekonstruovat, se využívá metody Monte Carlo pro pozorování závislosti chyby řešení na parametru lambda. U takto získaného výpočtu je zjištěna kvadratická chyba řešení LASSO vzhledem k původnímu vektoru dat.
 
 
-Vypracování bylo rozděleno do několika navazujících částí. Prvním a také nejdůležitějším krokem bylo nastudování vlastností proximálních algoritmů a výpočet proximálního operátora při různých vstupních funkcích. Po takto provedené rešerši proximálních algoritmů proběhla také rešerše vlastností optimalizační úlohy LASSO a jejích variant. V dalším kroku bylo možné přistoupit k implementaci algoritmu v programovacím jazyce a vývojovém prostředí MATLAB. Při postupné implementaci byl algoritmus upraven tak, aby vždy zkonvergoval ke správnému nebo alespoň co nejbližšímu přibližnému řešení optimalizačního problému. Z tohoto důvodu byl algoritmus rozšířen o podmínky optimality, jež ukončují výpočet při dosažení poměrně přesné aproximace. Dále byl algoritmus rozšířen o výpočet dynamické velikosti kroku, aby uživatel nemusel zadávat tento parametr, který velice ovlivňuje celkový chod algoritmu. S takto připraveným algoritmem mohla být vytvořena metoda Monte Carlo, jež generuje nekomprimovaný řídký vektor dat, měřící matice s prvky, které mají Gaussovo rozložení a parametr lambda v zadaném rozsahu s logaritmickým rozdělením. Závěrečnou fází této práce bylo vytvoření metod vytvářející analytickou předpověď spolu s numerickou simulací pro rešeršní účely.
+Vypracování bylo rozděleno do několika navazujících částí. Prvním a také nejdůležitějším krokem bylo nastudování vlastností proximálních algoritmů a výpočet proximálního operátora při různých vstupních funkcích. Po takto provedené rešerši proximálních algoritmů proběhla také rešerše vlastností optimalizační úlohy LASSO a jejích variant. V dalším kroku bylo možné přistoupit k implementaci algoritmu v programovacím jazyce a vývojovém prostředí MATLAB. Při postupné implementaci byl algoritmus upraven tak, aby vždy zkonvergoval ke správnému nebo alespoň co nejbližšímu přibližnému řešení optimalizačního problému. Z tohoto důvodu byl algoritmus rozšířen o podmínky optimality, jež ukončují výpočet při dosažení poměrně přesné aproximace. Dále byl algoritmus rozšířen o výpočet dynamické velikosti kroku, aby uživatel nemusel zadávat tento parametr, který velice ovlivňuje celkový chod algoritmu. S takto připraveným algoritmem mohla být použita metodika Monte Carlo k vytvoření numerické simulace, jež generuje nekomprimovaný řídký vektor dat, měřící matice s prvky, které mají Gaussovo rozložení a parametr lambda v zadaném rozsahu s logaritmickým rozdělením. Závěrečnou fází této práce bylo vytvoření metod vytvářející analytickou předpověď spolu s numerickou simulací pro rešeršní účely.
 
 
-Výsledek bakalářské práce může být prakticky využit pro další zpracování. Jedním z možných způsobů užití je např. pro vytvoření nového datového formátu, ve kterém by byl uložen jen komprimovaný vektor dat případně i měřící matice, pokud by nebyla shodná pro všechny komprimace. Na straně klienta by byl tedy pouze zrekonstruován původní nekomprimovaný signál.
+Zároveň tato práce navrhuje způsoby, jak může být pokračováno s nástroji, jež byly vytvořeny v průběhu jejího zpracování a získat tak přesnější výsledky.
 
 
 \textbf{Klíčová slova:} MATLAB, proximální algoritmus, proximální operátor, LASSO, Monte Carlo
@@ -72,9 +72,9 @@ The result of this thesis can be used for another usage. One of the possible usa
 
 \chapter{Úvod}
 \label{ch:uvod}
- V dnešním světě, kdy získáváme stále více důležitých a velkých dat je stále větší nutností nějakým způsobem získaná data komprimovat. Z uvedeného důvodu se tato práce zabývá komprimací dat a následnou rekonstrukcí u koncového uživatele. Bude pro to použito nového přístupu pomocí proximálních algoritmů, které jsou rychlé a jednoduché na implementaci.
+ V dnešním světě, kdy získáváme stále více důležitých a velkých dat je stále větší nutností nějakým způsobem získaná data komprimovat. Z uvedeného důvodu se tato práce zabývá komprimovaným vzorkováním dat a následnou rekonstrukcí u koncového uživatele. Bude pro to použito nového přístupu rekonstrukce původních dat a to pomocí proximálních algoritmů, které jsou rychlé a jednoduché na implementaci.
 
-Základní měření odpovídá funkci, viz \ref{eq:Zakladni mereni}, kde jsou původní data $x_0 \in \mathbb{C}^n$ transformována měřící maticí $A \in \mathbb{C} ^{m \cdot n}$, kde $m$ je počet řádků a $n$ počet sloupců matice a v poslední řadě je nutné uvažovat i náhodná data $z \in \mathbb{C}^m$. V této práci $z$ reprezentuje náhodný šum, který je přítomen při každém měření. Takto jsou získaná nová data $y \in \mathbb{C}^m$. V obecných případech platí, že $m \geq n$, ale v nich nedochází k žádné komprimaci dat, případně by i vzrostla velikost dat. Následná rekonstrukce by se tak redukovala pouze na spočtení inverzní, v případě obdélníkové matice pseudoinverzní, matice $A^{-1}$ a spočtení původních dat $x_0$. Tato bakalářská práce se zabývá případy, kdy $m < n$ a nelze tedy použít pseudoinverzní matici a musí tedy být použit jiný přístup.
+Základní měření odpovídá funkci, viz \ref{eq:Zakladni mereni}, kde jsou původní data $x_0 \in \mathbb{C}^n$ transformována měřící maticí $A \in \mathbb{C} ^{m \cdot n}$, kde $m$ je počet řádků a $n$ počet sloupců matice a v poslední řadě je nutné uvažovat i náhodná data $z \in \mathbb{C}^m$. V této práci $z$ reprezentuje náhodný šum, který je přítomen při každém měření. Takto jsou získaná nová data $y \in \mathbb{C}^m$. V obecných případech platí, že $m \geq n$, ale v nich nedochází k žádné komprimaci dat, případně by i vzrostla velikost dat. Následná rekonstrukce by se tak redukovala pouze na spočtení inverzní, v případě obdélníkové matice pseudoinverzní, matice $A^{-1}$ a spočtení původních dat $x_0$. Tato bakalářská práce se zabývá případy, kdy $m < n$ a nelze tedy použít pseudoinverzní matici, která existuje, ale nemá požadované vlastnosti a musí tedy být použit jiný přístup.
 
 \begin{equation} \label{eq:Zakladni mereni} \tag{Vzorec \theVzorce}
 y = A \cdot x_0 + z
@@ -82,14 +82,14 @@ y = A \cdot x_0 + z
 \myequations{\ref{eq:Zakladni mereni} - Základní měření}
 \stepcounter{Vzorce}
 
-Dle pravidel lineární algebry tak existuje nekonečně mnoho řešení a je tudíž nemožné v tomto případě zrekonstruovat původní data. Nicméně ve skutečnosti lze data zrekonstruovat a to za podmínky, že původní vektor dat $x_0$ je řídký, tedy většina prvků z $x_0$ je rovno $0$. Právě z popsaného důvodu jsou kompresní algoritmy, například pro kompresi formátu JPEG, kdy se ukládají pouze největší koeficienty diskrétní kosinové transformace, tak efektivní. Popsaná podmínka není jedinou nutnou k úspěšné rekonstrukci. Další podmínkou je správně zvolená měřící matice $A$. Například, při volbě diagonální jednotkové matice, by komprimovaná data $y$ byla z velké části nulová. Z předestřeného důvodu by pak nebylo možné rekonstruovat původní data. Jelikož je toto téma velice zkoumané v celosvětovém měřítku, vzniklo mnoho výzkumů, které se touto problematikou zabývají velice podrobně. Právě výzkumy ve světě ukazují, že má dojít k jisté rekonstrukci, je potřeba využít měřící matice o náhodných prvcích z normovaného normálního rozdělení, tj. normální rozdělení s nulovou střední hodnotou a jednotkovým rozptylem. V následujících kapitolách budou probrány jednotlivé kroky, které vedou k úspěšné rekonstrukci dat.
+Dle pravidel lineární algebry tak existuje nekonečně mnoho řešení a je tudíž nemožné v tomto případě zrekonstruovat původní data. Nicméně ve skutečnosti lze data zrekonstruovat a to za podmínky, že původní vektor dat $x_0$ je řídký, tedy většina prvků z $x_0$ je rovna $0$. Právě z popsaného důvodu jsou kompresní algoritmy, například pro kompresi formátu JPEG, kdy se ukládají pouze největší koeficienty diskrétní kosinové transformace, tak efektivní. Popsaná podmínka není jedinou nutnou k úspěšné rekonstrukci. Další podmínkou je správně zvolená měřící matice $A$. Například, při volbě diagonální jednotkové matice, by komprimovaná data $y$ byla z velké části nulová. Z předestřeného důvodu by pak nebylo možné rekonstruovat původní data. Jelikož je toto téma velice zkoumané v celosvětovém měřítku, vzniklo mnoho výzkumů, které se touto problematikou zabývají velice podrobně. Právě výzkumy ve světě ukazují, že má-li dojít k jisté rekonstrukci, je možné využít měřící matice o náhodných prvcích z normovaného normálního rozdělení, tj. normální rozdělení s nulovou střední hodnotou a jednotkovým rozptylem. V následujících kapitolách budou probrány jednotlivé kroky, které vedou k úspěšné rekonstrukci dat.
 
 \chapter{Optimalizační problémy}
 \label{ch:optproblem}
-Problém rekonstrukce původních dat z komprimovaného pozorování se vyskytuje v nejrůznějších oborech.  Mezi tyto obory patří strojové učení, zpracování signálů a další. Jeden z možných přístupů je využití tzv. optimalizačního problému. Optimalizační problém je takový, kdy hledáme nejlepší možné řešení $x$ ze všech možných a to tak, aby $f(x)$ bylo maximální nebo minimální, podle zadané úlohy. Hledáme tedy globální maximum, respektive minimum, funkce, kterou se snažíme vyřešit. 
+Problém rekonstrukce původních dat z komprimovaného vzorkování se vyskytuje v nejrůznějších oborech.  Mezi tyto obory patří strojové učení, zpracování signálů a další. Jeden z možných přístupů je definovat tzv. optimalizační problém. Optimalizační problém je takový, kdy hledáme nejlepší možné řešení $x$ ze všech možných a to tak, aby $f(x)$ bylo maximální nebo minimální, podle zadané úlohy. Hledáme tedy globální maximum, respektive minimum, na průběhu křivky. 
 
 
-Veškeré další řešení je založeno na tom, že lze optimalizační problémy zapsat v neomezeném tvaru. V tomto tvaru se minimalizuje obecný vstup $x$ přes součet $m$ konvexních funkcích $f_0 \ldots f_m$, které náleží množině $\mathbb{R}^m$. Takto zapsaný problém by byl definován jako:
+Veškeré další řešení je založeno na tom, že lze optimalizační problémy zapsat v \textit{neomezeném} tvaru. V tomto tvaru se minimalizuje obecný vstup $x$ přes součet $m$ konvexních funkcích $f_0 \ldots f_m$, které náleží množině $\mathbb{R}^m$. Takto zapsaný problém by byl definován jako:
 
 \begin{equation} \label{eq:Obecny problem} \tag{Vzorec \theVzorce}
 \underset{x \in \mathbb{R}^n} {\mathrm{min}} f_{0}(x)+\ldots+f_{m}(x)
@@ -97,11 +97,11 @@ Veškeré další řešení je založeno na tom, že lze optimalizační problé
 \myequations{\ref{eq:Obecny problem} - Obecný optimalizační problém}
 \stepcounter{Vzorce}
 
-Nicméně, jelikož lze uvažovat jakoukoliv výše zmíněnou funkci, může se vyskytnout typický problém. Některé funkce nejsou derivovatelné. Z tohoto důvodu se nadále bude na funkce a jejich řešení nahlížet jako na samostatný problém.
+Nicméně, jelikož lze uvažovat jakoukoliv výše zmíněnou funkci, může se vyskytnout typický problém. Některé funkce nejsou diferencovatelné. Z tohoto důvodu se nadále bude na funkce a jejich řešení nahlížet jako na samostatný problém.
 
 \section{Optimalizační problém LASSO}
 \label{subch:optLASSO}
-Jednou z variant jak řešit zadání této bakalářské práce je použití minimalizace a to tak, že se využije neomezeného tvaru optimalizačního problému pouze s funkcemi $f_0$ a $f_1$. Jedna z těchto funkcí se nahradí konkrétním předpisem a vznikne tak \ref{eq:Obecne LASSO}. Funkce $f_1(x)$ ve vzorci je libovolná a volí se podle toho, jaké vlastnosti mají vstupní data. 
+Jednou z variant jak řešit zadání této bakalářské práce je použití minimalizace a to tak, že se využije neomezeného tvaru optimalizačního problému pouze s funkcemi $f_0$ a $f_1$. Jedna z těchto funkcí se nahradí konkrétním předpisem pro rekonstrukci dat. Vznikne tak \ref{eq:Obecne LASSO}. Funkce $f_1(x)$ ve vzorci je libovolná a volí se podle toho, jaké vlastnosti mají vstupní data. 
 
 \begin{equation} \label{eq:Obecne LASSO} \tag{Vzorec \theVzorce}
 \underset{x} {\mathrm{argmin}} ~\left\{\left\|y-A \cdot x\right\| ^2 _2+ \lambda \cdot f_1(x)\right\}
@@ -109,7 +109,7 @@ Jednou z variant jak řešit zadání této bakalářské práce je použití mi
 \myequations{\ref{eq:Obecne LASSO} - Obecná úloha LASSO}
 \stepcounter{Vzorce}
 
-V případě řídkého vektoru se volí funkce $\left\|x\right\|_1$ a vzniká tak vztah popsaný níže. Tento nový vztah zároveň řeší dva problémy a to rekonstrukci původních dat $x_0$ a jejich odšumnění.
+V případě řídkého vektoru se volí taková funkce, která zajišťuje řídkost řešení. Jednou z možných funkcí, jež má tyto vlastnosti, je $\left\|x\right\|_1$ a vzniká tak vztah popsaný níže. Tento nový vztah zároveň řeší dva problémy a to rekonstrukci původních dat $x_0$ a jejich odšumnění.
 
 \begin{equation} \label{eq:Konkretni LASSO} \tag{Vzorec \theVzorce}
 \underset{x} {\mathrm{argmin}} ~\left\{\left\|y-A \cdot x\right\| ^2 _2+ \lambda \cdot \left\|x\right\|_1\right\}
@@ -117,17 +117,11 @@ V případě řídkého vektoru se volí funkce $\left\|x\right\|_1$ a vzniká t
 \myequations{\ref{eq:Konkretni LASSO} - Konkrétní úloha LASSO}
 \stepcounter{Vzorce}
 
-Jelikož obě funkce optimalizačního problému LASSO obsahují funkci $l$ normy, musí být zmíněna i její definice, která je popsána \ref{eq:norma}. V případě $l1$ normy tak získáme pouze sumu absolutních hodnot a vzniká současně problém, jak bylo naznačeno v kapitole \ref{ch:optproblem}, tedy nederivovatelná funkce. Jak je logické z definice absolutní hodnoty a derivace, lze sestrojit nekonečně mnoho tečen v bodě se souřadnicemi $[0, 0]$, v případě dvourozměrného prostoru, a nelze tak spočítat její derivaci. Pro další zpracování je důležité uvědomění si, že funkce nemá derivaci a proto s ní musí být pracováno odlišným způsobem.
-
-\begin{equation} \label{eq:norma} \tag{Vzorec \theVzorce}
-\left\|x\right\|_p = \left(\sum_{i=1}^{n} \left|x_i\right|^p\right)^{1/p}
-\end{equation}
-\myequations{\ref{eq:norma} - Výpočet normy}
-\stepcounter{Vzorce}
+Jelikož obě funkce optimalizačního problému LASSO obsahují funkci normy, musí být zmíněna i její definice, která je popsána $\left\|x\right\|_p = \left(\sum_{i=1}^{n} \left|x_i\right|^p\right)^{1/p}$. V případě $\left\| \cdot \right\|_{1} $ tak získáme pouze sumu absolutních hodnot a vzniká současně problém, jak bylo naznačeno v kapitole \ref{ch:optproblem}, tedy nediferenciovatelná funkce. Jak je logické z definice absolutní hodnoty a derivace, lze sestrojit nekonečně mnoho tečen v bodě se souřadnicemi $[0, 0]$, v případě dvourozměrného prostoru, a nelze tak spočítat její derivaci v tomto bodě. Pro další zpracování je důležité uvědomění si, že funkce nemá derivaci a proto s ní musí být pracováno odlišným způsobem.
 
 \chapter{Proximální algoritmy}
 \label{ch:proxalg}
-Jednou z možností, jak vyřešit optimalizační problém zmíněný v předchozí kapitole, je využít proximální algoritmy a proximální operátory příslušející konkrétním funkcím optimalizačního problému. Proximální algoritmus je něco, co lze zapsat vztahem:
+Jednou z možností, jak vyřešit optimalizační problém zmíněný v předchozí kapitole, je využít proximální algoritmy a proximální operátory příslušející konkrétním funkcím optimalizačního problému. Proximální algoritmus můžeme vhodně zapsat vztahem:
 
 \begin{equation} \label{eq:proxAlg} \tag{Vzorec \theVzorce}
 x_{n+1} = prox_{\lambda \cdot f}(x_{n})
@@ -135,13 +129,13 @@ x_{n+1} = prox_{\lambda \cdot f}(x_{n})
 \myequations{\ref{eq:proxAlg} - Zápis proximálního algoritmu}
 \stepcounter{Vzorce}
 
-V tomto vzorci je $f$ uzavřená konvexní funkce, která splňuje $f : \mathbb{R}^{m} \rightarrow \mathbb{R} \cup \left\{+\infty\right\}$. Jak je vidno, proximální algoritmy jsou velice výhodné, pouze pokud je výpočet proximálního operátora efektivní a velice rychlý na výpočet. Pokud by nebylo splněno toto kritérium, pak by se mnoho času strávilo výpočtem proximálního operátoru, který se musí provádět v každé iteraci algoritmu. Další obrovskou výhodou těchto algoritmů je také to, že byly navrženy pro co nejobecnější využití a lze je tak aplikovat na nejrůznější problémy.
+V tomto vzorci je $f$ uzavřená konvexní funkce, která splňuje $f : \mathbb{R}^{m} \rightarrow \mathbb{R} \cup \left\{+\infty\right\}$. Jelikož je proximální algoritmus založen na iteračním postupu, je to také zohledněno ve vzorci a to použitím indexu $n$. Pro $n+1$ iteraci platí, že se spočítá proximální operátor z $n$ kroku. Jak je vidno, proximální algoritmy jsou velice výhodné, pouze pokud je výpočet proximálního operátoru efektivní a velice rychlý na výpočet. Pokud by nebylo splněno toto kritérium, pak by se mnoho času strávilo výpočtem proximálního operátoru, který se musí provádět v každé iteraci algoritmu. Další výhodou těchto algoritmů je také to, že byly navrženy pro takové funkce, které musí být spojité, ale nemusí být diferencovatelné. Lze je tak využít pro velké množství obecných problémů.
 
 \section{Proximální operátor}
 \label{subch:proxOpt}
-Jak již bylo naznačeno v úvodu této kapitoly, bude využito proximálního operátoru pro rekonstrukci dat. Proximální operátory jsou velice důležitou součástí a to proto, že nahrazují funkce, které jsou obtížně řešitelné nebo by jejich výpočet byl velice zdlouhavý. Volbu konkrétního operátoru určují vstupní funkce z optimalizačního problému, resp. vlastnosti vstupních dat. 
+Jak již bylo naznačeno v úvodu této kapitoly, bude využito proximálního operátoru pro výpočet nového kroku proximálního algoritmu. Proximální operátory jsou velice důležitou součástí a to proto, že nahrazují funkce, které jsou obtížně řešitelné nebo by jejich výpočet byl velice zdlouhavý. V případě hladké funkce tedy dochází k postupnému nalezení globálního minima. 
 
-Jelikož se v konkrétním předpisu úlohy LASSO, viz \ref{eq:Konkretni LASSO}, objevuje funkce $\left\| x\right\| _1$, byl zvolen proximální operátor nazývaný \uv{měkké prahování}, dle \cite{proxAlg1} a \cite{proxAlg2}. Jedná se o velice jednoduchou funkci, kdy se vstupní data porovnávají s parametrem a to dle vztahu \ref{eq:soft}. 
+Jelikož se v konkrétním předpisu úlohy LASSO, viz \ref{eq:Konkretni LASSO}, objevuje funkce $\left\| x\right\| _1$, musí být použit proximální operátor nazývaný \uv{měkké prahování}, dle \cite{proxAlg1} a \cite{proxAlg2}. Jedná se o velice jednoduchou funkci, kdy se vstupní data porovnávají s parametrem a to dle vztahu \ref{eq:soft}. 
 
 \begin{equation} \label{eq:soft} \tag{Vzorec \theVzorce}
 soft(x, \lambda) = \begin{cases}
@@ -153,7 +147,7 @@ x + \lambda & x < 0
 \myequations{\ref{eq:soft} - Měkké prahování}
 \stepcounter{Vzorce}
  
- Takto definovaný proximální operátor zajišťuje pozvolnou konvergenci ke správnému řešení. Celkovou rychlost operátora tedy určuje zejména parametr $\lambda$, o který se vstupní data mění v každém kroku. Pro lepší pochopení této funkce je zařazen graf \ref{fig:threshhold}, ve kterém se vstupní data z intervalu $\left\langle -5, 5\right\rangle $ změní maximálně o parametr $\lambda$, jenž byl zvolen $\lambda = 0,5$.
+ Celkovou rychlost operátoru tedy určuje zejména parametr $\lambda$, o který se vstupní data mění v každém kroku. Parametry $\lambda$ nám tedy udává velikost změny od vstupních dat $x$. Pro lepší pochopení této funkce je zařazen graf \ref{fig:threshhold}, ve kterém se vstupní data z intervalu $\left\langle -5, 5\right\rangle $ změní maximálně o parametr $\lambda$, jenž byl zvolen $\lambda = 0,5$.
  
 \begin{figure}[!ht]
 \begin{center}
@@ -190,9 +184,9 @@ x_{n+1} = prox_{\lambda \cdot \alpha}(x_{n}- \alpha \cdot \partial f(x_{n}))
 \myequations{\ref{eq:ComputeX} - Výpočet nových dat $x$}
 \stepcounter{Vzorce}
 
-Výpočet provedený dle předchozího kroku dává řešení postupně konvergující k optimálnímu bodu a to za předpokladu, že byl vhodně zvolen kompenzační parametr $\lambda$. V případě neoptimálně zvoleného parametru $\lambda$ je algoritmus daleko rychlejší než v případě s optimálněji zvoleným parametrem, ale tolerance je příliš veliká, takže nedochází k úplné rekonstrukci dat a byla by tak získána nepřesná data.
+Výpočet provedený dle předchozího kroku dává řešení postupně konvergující k optimálnímu bodu a to za předpokladu, že byl vhodně zvolen kompenzační parametr $\lambda$. V případě neoptimálně zvoleného parametru $\lambda$ je algoritmus daleko rychlejší než v případě s optimálněji zvoleným parametrem, ale tolerance je příliš veliká, takže nedochází k úplné konvergenci. Vlivem špatné konvergence jsou získána nepřesná data.
 
-Pro praktickou ukázku byly vytvořeny grafy v obrázku \ref{fig:basicLambda}. V této ukázce byly náhodně vygenerovány: vektor dat $x$, měřící matice $A$ a náhodný šum $z$. Následně byly zvoleny dva kompenzační parametry $\lambda$. První z těchto parametrů má hodnotu 100. S takto zvoleným parametrem je průběh velice rychlý a v cca 100 iteracích je algoritmus ukončen. Ve druhém případě byla zvolena hodnota parametru 0.1. S uvedenou hodnotou není algoritmus tak rychlý, jako v předchozím případě, proběhne cca 1500 iterací algoritmu, ale jsou získána velice přesná data.
+Pro praktickou ukázku byly vytvořeny grafy v obrázku \ref{fig:basicLambda}. Pro tyto ukázky byly použity dva parametry $\lambda$, $100$ a $0,1$. Následně byly náhodně vygenerovány: vektor dat $x$, měřící matice $A$ a náhodný šum $z$. Uvedené proměnné byly shodné pro oba parametry $\lambda$. S takto zvoleným parametrem je průběh velice rychlý a v cca 100 iteracích je algoritmus ukončen. S druhou hodnotou parametru, $\lambda = 0,1$, není algoritmus tak rychlý, jako v předchozím případě, proběhne cca 1500 iterací algoritmu, ale jsou získána velice přesná data.
 
 \begin{figure}[!ht]
 	\begin{center}
@@ -208,15 +202,20 @@ Jak je vidno z předložených grafů, je parametr $\lambda$ velice významný. 
 \section{Délka kroku algoritmu}
 \label{subch:dynamicStep}
 Neméně významným parametrem, jako byl uvedený parametr $ \lambda $, je i délka kroku $ \alpha $. Pro pochopení fungování byl nejprve implementován algoritmus s pevnou délkou kroku. Ukázalo se, že toto není zcela optimální, jak bude naznačeno v následujících grafech.
+
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.57]{obr/basic.pdf}
+\includegraphics[scale=0.55]{obr/basic.pdf}
 \end{center}
 \caption{Ukázka průběhu algoritmu při různé volbě délky kroku}
 \label{fig:basicAlpha}
 \end{figure} 
 
-Jak lze vidět grafech \ref{fig:basicAlpha} na následující stránce, tak délka kroku má obrovský dopad, dokonce větší než kompenzační parametr $\lambda$. Na levém grafu, pro jehož vytvoření byla použita přiměřená délka kroku algoritmu tj. $0,001$, je vidět, že algoritmus konverguje ke správnému řešení. Vzniká ale současně mnoho nepřesností, které se nepodařilo odstranit do konce průběhu algoritmu. V daném případě bylo nastaveno maximálně 5000 iterací. Ve druhém průběhu, kde byla použita stejná data jako v prvním grafu, lze vidět, že se algoritmus chová velmi citlivě. Proběhlo pouze deset iterací a řešení velice rychle diverguje. Z tohoto důvodu byl původní algoritmus rozšířen o dynamický výpočet velikosti kroku.
+Jak lze vidět grafech \ref{fig:basicAlpha} na následující stránce, tak délka kroku má obrovský dopad, dokonce větší než kompenzační parametr $\lambda$. Na levém grafu, pro jehož vytvoření byla použita přiměřená délka kroku algoritmu tj. $0,001$, je vidět, že algoritmus konverguje ke správnému řešení. Vzniká ale současně mnoho nepřesností, které se nepodařilo odstranit do konce průběhu algoritmu. V daném případě bylo nastaveno maximálně 5000 iterací. 
+
+Pro názornost jsou uvedeny grafy, které představují v prvním případě změnu po jedné iteraci, jak je znázorněno v příloze C - obrázek \ref{fig:diff1}, konkrétně mezi 30 a 31 iterací. Druhá ukázka, viz příloha D - obrázek \ref{fig:diff300}, představuje změnu mezi 100 a 400 iterací. 
+
+Ve druhém průběhu, kde byla použita stejná data jako v prvním grafu, lze vidět, že se algoritmus chová velmi citlivě. Proběhlo pouze deset iterací a řešení velice rychle diverguje. Z tohoto důvodu byl původní algoritmus rozšířen o dynamický výpočet velikosti kroku.
 
 Dynamická volba kroku využívá přístupu z článku \cite{dynamickyKrok}, kdy se velikost kroku vypočte pomocí aktuálně nalezených $x_{n}$, předchozích dat $x_{n-1}$ a měřící matice $A$ dle vztahu \ref{eq:ComputeAlpha}.
 
@@ -238,9 +237,13 @@ Nově upravený algoritmus již korektně rekonstruuje původní data, jak lze t
 
 \section{Podmínky optimality}
 \label{subch:stopCrit}
-Algoritmus připravený dle popisu v této kapitole byl dále rozšířen o podmínky optimality, které zaručují ukončení algoritmu, pakliže je změna rekonstruovaných dat dostatečně malá. V případě, že by algoritmus toto neobsahoval došlo by v lepším případě pouze k nezastavení algoritmu a uživatel by pouze plýtval výpočetním časem. V horších případech by však mohlo dojít i k divergenci algoritmu z jakéhokoliv aktuálního bodu a to kvůli dynamické volbě kroku. 
+Algoritmus připravený dle popisu v této kapitole byl dále rozšířen o podmínky optimality, které zaručují ukončení algoritmu, pakliže je změna rekonstruovaných dat dostatečně malá. Nadále uvažujeme podmínky pouze pro $\left\| \cdot \right\|_{2}^{2} $ LASSO, jelikož pro ostatní případy, které budou zmíněny v dalších kapitolách, tyto podmínky neplatí. V případě, že by algoritmus toto neobsahoval, došlo by v lepším případě pouze k nezastavení algoritmu a uživatel by pouze plýtval výpočetním časem. V horších případech by však mohlo dojít i k divergenci algoritmu z jakéhokoliv aktuálního bodu a to kvůli dynamické volbě kroku. 
 
-Dynamická volba kroku je založena na výpočtu rozdílu aktuálního a předchozího kroku algoritmu. Pokud by tato změna byla dostatečně malá, vlivem nepřesnosti počítače by tak vznikla nulová data a právě z popsaného důvodu by se z původního výpočtu, viz \ref{eq:ComputeAlpha}, stalo $\nicefrac{0}{0}$, což je v oboru reálných čísel $\mathbb{R}$ neřešitelný problém. Z předestřeného důvodu by došlo k chybě algoritmu a došlo by ke ztrátě aktuálního vypočteného signálu dat již při výpočtu bližšího bodu k optimálnímu. Právě kvůli těmto případům bylo využito článku \cite{homotopy}. 
+Dynamická volba kroku je založena na výpočtu rozdílu aktuálního a předchozího kroku algoritmu. Pokud by tato změna byla dostatečně malá, vlivem nepřesnosti počítače by tak vznikla data obsahující pouze $0$ a právě z popsaného důvodu by se z původního výpočtu, viz \ref{eq:ComputeAlpha}, stalo $\nicefrac{0}{0}$, což je v oboru reálných čísel $\mathbb{R}$ nereálná možnost. Z předestřeného důvodu by došlo k chybě algoritmu a došlo by ke ztrátě aktuálního vypočteného signálu dat již při výpočtu bližšího bodu k optimálnímu. Právě kvůli těmto případům bylo využito článku \cite{homotopy}.
+
+První z podmínek je $(a_{i}^{n})^{T} \cdot (A^{n} \cdot x^{n} - y^{n}) = - w_{i} \cdot z_{i}$. Ta se zabývá pouze nenulovými prvky z $n$ kroku proměnné $x^{n}$. V tomto případě se rozdíl aktuálního kroku komprimovaného vzorkování $A^{n} \cdot x^{n}$ a původního komprimovaného vzorkování $y^{n}$ vynásobený $a_{i}$, tedy $i$ sloupci matice $A^{n}$, porovnává s váhami $w_{i}$, které jsou navíc upraveny o znaménko $z_{i} = sign(x_{i}^{n})$.
+
+Druhá z podmínek je velice podobná, ale zabývá se pouze nulovými prvky. Její definice je $\left|(a_{i}^{n})^{T} \cdot (A^{n} \cdot x^{n} - y^{n})\right| < w_{i}$. Porovnává se tedy, jestli je absolutní hodnota rozdílu aktuálně nalezeného komprimovaného vzorkování od původního komprimovaného vzorkování vynásobeného $i$ sloupci z matice $A$, kde $i$ značí indexy nulových prvků aktuálně nalezeného řešení $x^{n}$ menší než zadaná váha významnosti $w_{i}$.
 
 V návaznosti na popsaný problém byly vytvořeny další dvě funkce pro uvedené podmínky. První z nich se zabývá pouze nenulovými prvky s indexy $i$ a má předpis:
 
@@ -267,15 +270,15 @@ Popsané řešení je jen dílčím výsledkem této práce, dosud nebylo uvažo
 
 \chapter{Analýza chyby řešení}
 \label{ch:simulace}
-Aby bylo možné učinit obecně jakýkoliv závěr, v tomto případě pozorovat závislost parametru $\lambda$ a kvadratické chyby nalezeného řešení optimalizačního úlohy LASSO pomocí algoritmu navrženého v kapitole \ref{ch:fwbw}, je nutné vytvořit simulaci. Takovéto simulace vycházejí z toho, že se opakovaně provádí vybraný algoritmus na větším množství vygenerovaných dat, která jsou na sobě nezávislá.
+Aby bylo možné učinit obecně jakýkoliv závěr, v tomto případě pozorovat závislost parametru $\lambda$ a kvadratické chyby nalezeného řešení optimalizačního úlohy LASSO pomocí algoritmu navrženého v kapitole \ref{ch:fwbw}, je nutné vytvořit simulaci. Takovéto simulace vycházejí z metodiky, kdy se opakovaně provádí vybraný algoritmus na větším množství vygenerovaných dat, která jsou na sobě nezávislá a následný průměr kroků simulace poskytuje nástroj pro učinění závěru.
 
 V tomto případě se simuluje získání dat $x$, která mohou pocházet z libovolného měření. Poté se opakovaně generuje náhodná měřící matice $A$ a následně se spočte komprimovaný vektor $y$, ke kterému je také přičten náhodný šum $z$. Tyto dvě proměnné jsou použity jako vstup pro zvolený algoritmus spolu s předem danými parametry $\lambda$ s logaritmickým rozložením v daném rozsahu, ve kterém je nutné sledovat závislost kvadratické chyby rekonstruovaných dat na uvedeném parametru $\lambda$.
 
 \section{Realizace simulace}
 \label{subch:sim}
-Jednou z možných simulací je metoda Monte Carlo. Tato metoda je jednoduchá na realizaci, poskytuje velice přesné výsledky a zároveň splňuje veškeré nároky, které jsou požadovány od podobné simulace. Právě proto je vhodná pro prvotní testování daného algoritmu. V uvedenou dobu není třeba zabývat se složitějšími simulacemi, protože by nepřinesly žádný benefit a došlo by spíše ke zpomalení zpracování. 
+Jednou z možných simulací je metoda Monte Carlo. Tato metoda je jednoduchá na realizaci, poskytuje velice přesné výsledky a zároveň splňuje veškeré nároky, které jsou požadovány od podobné simulace. Právě proto je vhodná pro prvotní testování daného algoritmu. 
 
-Uvedená simulace je založena, jak již bylo zmíněno, na opakovaném generování náhodných dat, na kterých se provádí daný algoritmus a jsou takto získávány průběžné výsledky. Nicméně dílčí výsledky neříkají nic o celkové závislosti kvadratické chyby nalezeného řešení od původních dat na parametru $\lambda$ a proto jsou tato data zprůměrována. Následný průměr poté poskytuje kýžené empirické pozorování. 
+Uvedená simulace je založena, jak již bylo zmíněno, na opakovaném generování náhodných dat, na kterých se provádí daný algoritmus a jsou takto získávány průběžné výsledky. Nicméně dílčí výsledky neříkají nic o celkové závislosti kvadratické chyby nalezeného řešení od původních dat na parametru $\lambda$ a proto jsou dílčí výsledky zprůměrovány. Následný průměr poté poskytuje empirické pozorování. Z tohoto pozorování již lze vyvodit optimální parametr $\lambda$. Ten představuje globální minimum průměru dané simulace. Uvedený parametr $\lambda$ je hledán pomocí simulace, protože neexistuje způsob, jak ho určit analyticky.
 
 \begin{figure}[!ht]
 	\begin{center}
@@ -289,13 +292,13 @@ Protože jde pouze o opakované provádění testovaného algoritmu, je tato sim
 
 Obdobou této možnosti bylo použití modifikované verze jazyka C++ s knihovnami pro programování s využitím velmi výkonných grafických karet a na jednotlivých vláknech provádět dané výpočty. 
 
-S využitím architektury CUDA pro grafické karty od společnosti NVIDIA byl implementován jednoduchý demonstrativní program, nicméně kvůli začátečnickým zkušenostem s touto architekturou trvalo velice dlouhou dobu jen samotné pochopení fungování. V simulaci by tedy byly zpracovávány všechny parametry $\lambda$ ve stejný okamžik pro jednu iteraci simulace a celkový čas by byl daleko nižší než uvedené časy v MATLABu. Pokud by se pokračovalo cestou využití této architektury, ztratilo by se příliš mnoho času implementací základních funkcí, které již jsou připraveny k použití ve vývojovém prostředí MATLAB. Z výše uvedeného důvodu by bylo také obtížné odladit implementované funkce. 
+S využitím architektury CUDA pro grafické karty od společnosti NVIDIA byl implementován jednoduchý demonstrativní program, nicméně kvůli začátečnickým zkušenostem s touto architekturou trvalo velice dlouhou dobu jen samotné pochopení fungování. V simulaci by tedy byly zpracovávány všechny parametry $\lambda$ ve stejný okamžik pro jednu iteraci simulace a celkový čas by byl daleko nižší než uvedené časy v MATLABu. Pokud by se pokračovalo cestou využití této architektury, ztratilo by se příliš mnoho času implementací základních funkcí, které již jsou připraveny k použití ve vývojovém prostředí MATLAB.  
 
 Na základě uvedených zjištění bylo přistoupeno k další možnosti a to neřešit celkový čas simulace. Proto tedy bylo řešení simulace rozšířeno o další blok, kterým se docílí daného požadavku, aby výsledky nebyly ztraceny při nečekaných událostech jako je výpadek elektrického proudu nebo pád systému.
 
 \section{Zálohování výsledků}
 \label{subch:backup}
-Onou nalezenou možností, jak je zmíněno v předchozí kapitole, je průběžné zálohování výsledků. První varianta této funkce byla realizována pomocí jednoduché tabulky, kam byl ukládaný pouze průměr simulace. Nicméně s takto zálohovaným výsledkem již nebylo možné pokračovat v simulaci. Proto byla vytvořena struktura v MATLABu, viz následující diagram.
+Onou nalezenou možností, jak je zmíněno v předchozí kapitole, je průběžné zálohování výsledků. První varianta této funkce byla realizována pomocí jednoduché tabulky, kam byl ukládaný pouze průměr simulace. Nicméně s takto zálohovaným výsledkem již nebylo možné pokračovat v simulaci. Proto byla vytvořena struktura v MATLABu, viz následující diagram \ref{fig:struktura}.
 
 \begin{figure}[!ht]
 	\begin{center}
@@ -313,7 +316,7 @@ Následně uživatel volí soubor pomocí standardních vstupních zařízení, 
 
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[scale=0.7]{obr/structure_new.pdf}
+		\includegraphics[scale=0.8]{obr/structure_new.pdf}
 	\end{center}
 	\caption{Upravená struktura pro pozdější využití}
 	\label{fig:newstruct}
@@ -349,9 +352,13 @@ Dalším možným rozšířením tohoto skriptu je využít odlišných metod sl
 
 \section{Výsledek pro $\left\| \cdot \right\|_{2}^{2}$ LASSO}
 \label{subch:resultL22}
-Se simulací připravenou dle popisů v předchozích podkapitolách již lze přistoupit k samotnému použití. Na začátku simulace je důležité zvolit několik parametrů: počet parametrů $\lambda$ a jejich rozsah, počet prvků původních dat $x$, počet řádků měřících matic $A$ a také počet opakování průběhu algoritmu. Toto nastavení je také uloženo ve struktuře, jak bylo vysvětleno v předchozí podkapitole. 
+Se simulací, připravenou dle popisů v předchozích podkapitolách, již lze přistoupit k samotnému použití. Na začátku simulace je důležité zvolit několik parametrů: počet parametrů $\lambda$ a jejich rozsah, počet prvků původních dat $x$, počet řádků měřících matic $A$ a také počet opakování simulace. Toto nastavení je také uloženo ve struktuře, jak bylo vysvětleno v předchozí podkapitole. 
 
-Po ukončení často velice dlouhé simulace je získána empirická závislost kvadratické chyby nalezeného řešení od skutečných dat pro každý prvek z vektoru parametrů $\lambda$. Očekávána byla křivka s jedním globálním minimem a ostatní hodnoty získané dle parametru $\lambda$ daleko větší než je ono globální minimum a to z důvodu, velké tolerance nebo malého kroku algoritmu podle toho, do jakého regionu spadá konkrétní hodnota parametru $\lambda$. Důvody tohoto očekávání budou popsány v další kapitole \ref{ch:vysledky}. Nejčastěji lze proto získat křivku podobnou následujícím grafům: 
+Po ukončení, často velice dlouhé simulace, je získána empirická závislost kvadratické chyby nalezeného řešení od skutečných dat pro každý prvek z vektoru parametrů $\lambda$. 
+
+Obecně lze rozdělit parametr $\lambda$ do 3 regionů. První z nich, tzv. $R_{off}$, definující interval $\left\langle 0, \lambda_{crit}\right\rangle$, kde $\lambda_{crit}$ značí začátek postupného klesání kvadratické chyby. Obdobou je region $R_{\infty}$ s intervalem $\left\langle\lambda_{max}, \infty\right\rangle$, kde $\lambda_{max}$ udává, pro který parametr $\lambda$ je již chyba maximální možná. Poslední z regionů $R_{on}$, nejdůležitější region, vytváří interval $\left(\lambda_{crit}, \lambda_{max}\right)$. V tomto intervalu se již nachází globální minimum, tedy parametr $\lambda$, pro který je kvadratická chyba nejmenší možná.
+
+Očekávána byla křivka s jedním globálním minimem a ostatní hodnoty získané dle parametru $\lambda$ daleko větší než je ono globální minimum a to z důvodu, velké tolerance nebo malého kroku algoritmu podle toho, do jakého regionu spadá konkrétní hodnota parametru $\lambda$. Důvody tohoto očekávání budou popsány v další kapitole \ref{ch:vysledky}. Pro ilustraci byla vytvořena simulace pro vektor dat $x$, která je shodná v obou případech. V prvním případě nebyl využit náhodný šum $z$ s malým rozptylem. V druhém případě již šum byl uvažován. Proto je možné získat většinou křivky, které jsou podobné následujícím grafům a vycházejí z uvedených podmínek:
 
 \begin{figure}[!ht]
 	\begin{center}
@@ -586,4 +593,24 @@ Získané poznatky se shodovaly s dlouholetou prací Babaka Hassibiho, Ph.D. z C
 		\caption{Diagram finálního algoritmu}
 		\label{fig:finalAlg}
 	\end{figure}
+\newpage
+\addcontentsline{toc}{section}{Příloha C: Změna po jedné iteraci}
+\section*{Příloha C: Změna po jedné iteraci}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[scale=1]{obr/diff1.pdf}
+		\end{center}
+		\caption{Změna po jedné iteraci}
+		\label{fig:diff1}
+		\end{figure}
+\newpage
+\addcontentsline{toc}{section}{Příloha D: Změna po 300 iteracích}
+\section*{Příloha D: Změna po 300 iteracích}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[scale=0.9]{obr/diff300.pdf}
+	\end{center}
+	\caption{Změna po 300 iteracích}
+	\label{fig:diff300}
+\end{figure}  
 \end{document}
